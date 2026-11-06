@@ -1,6 +1,6 @@
 # Guía de anotación
 
-!!! warning "Versión 0 · borrador"
+!!! warning "Versión 0.1 · borrador"
     Esta es la versión de trabajo. La versión 1 se cierra con el tag `guia-v1` **antes** de anotar ninguna instancia de los conjuntos de calibración o test. Todos los ejemplos de esta guía son **inventados**; ninguno procede de una resolución real.
 
 ## 1. Qué se anota
@@ -23,15 +23,19 @@ Es la **regla contrafactual** ([ADR-010](decisiones/ADR-010-etiqueta-cendoj.md))
 Además de la etiqueta:
 
 - **`categoria`**, solo si la etiqueta es `SI`: `PERSONA`, `IDENTIFICADOR`, `DIRECCION`, `CONTACTO`, `OTRO`.
-- **`rol`**, solo si la etiqueta es `SI` y la categoría es `PERSONA`: `parte` (demandante, acusado, testigo, víctima, familiares…), `profesional` (procurador, letrado, perito, notario, graduado social…), `judicial` (magistrado, juez, LAJ, fiscal) u `otro`.
+- **`rol`**, solo si la etiqueta es `SI` y la categoría es `PERSONA`:
+    - `parte`: partes procesales y personas implicadas en los hechos (demandante, acusado, víctima, testigo, familiares);
+    - `profesional`: quien interviene por su oficio en el proceso (procurador, letrado, perito, notario, graduado social);
+    - `judicial`: magistrado, juez, LAJ o fiscal;
+    - `otro`: cualquier otra persona, por ejemplo empleados de una empresa que es parte o personas citadas de pasada.
 - **`nota`**, opcional: una línea si la decisión no es obvia.
 
 ## 3. Reglas
 
 1. **Pseudónimos → `SI`.** «Teodosio» puesto por el CENDOJ en lugar del nombre real sigue cumpliendo el papel de nombre de una persona.
 2. **Profesionales y miembros del tribunal → `SI`**, con su `rol`. Son personas identificadas, aunque en la práctica no se tapen. Si hay que taparlos es una cuestión de política, no de esta etiqueta.
-3. **Tratamientos.** «Sr.», «Dña.», «D.» o «Magistrada» **solos**, sin nombre → `NO`. Si el span es «Sra. Agustina» → `SI`.
-4. **Spans mal cortados.** Si contiene una parte reconocible del nombre de una persona → `SI`. Si no contiene ninguna → `NO`. Ejemplo: `⟦FERNANDEZ DON JAVIER⟧` en una lista de magistrados es `SI`; `⟦DEMANDADA DE⟧` es `NO`.
+3. **Tratamientos, cargos y profesiones sin nombre → `NO`.** «Sr.», «Dña.», «Ilma.», «Presidente», «Magistrada», «Letrada», «Procurador» o «Fiscal» solos. Si el span es «Sra. Agustina» → `SI`.
+4. **Spans mal cortados o con palabras de más.** Si el span contiene una parte reconocible del nombre de una persona → `SI`, aunque le sobren o le falten palabras. Si no contiene ninguna → `NO`. Ejemplos: `⟦FERNANDEZ DON JAVIER⟧` en una lista de magistrados → `SI`; `⟦Dª. Ana Gil Ruiz Demandado-apelado⟧` → `SI`; `⟦DEMANDADA DE⟧` → `NO`; `⟦BILBAO⟧` dentro de «Banco Bilbao Vizcaya» → `NO`. La etiqueta responde a «¿hay aquí un dato personal?», no a «¿está bien cortado?».
 5. **Datos del órgano judicial → `NO`.** Teléfono, fax, correo, dirección o cuenta de consignaciones del juzgado.
 6. **Empresas y organismos → `NO`**, aunque lleven un apellido. Excepción: si el contexto deja claro que se trata de un empresario individual identificado por ese nombre, `SI`.
 7. **Lugares.**
@@ -40,7 +44,9 @@ Además de la etiqueta:
     - Una localidad pequeña ligada a una persona concreta: si con el contexto puede contribuir a identificarla → `SI`, categoría `OTRO`; si no, `NO`. En caso de duda real, `AMBIGUO`.
 8. **Números.** Números de procedimiento, recurso, sentencia o ley, fechas e importes → `NO`. DNI, NIE, pasaporte, NUSS, IBAN personal o matrícula de una persona → `SI`, categoría `IDENTIFICADOR`.
 9. **Nombres de personas en citas de jurisprudencia o doctrina** («como dijo el ponente X en la STS…») → `SI`, `rol = judicial` u `otro`.
-10. **Palabras corrientes detectadas como nombre** («FALLAMOS», «Acordaron», «estenotipia») → `NO`.
+10. **Palabras corrientes detectadas como nombre** («FALLAMOS», «Acordaron», «estenotipia», «Segundo», «HECHO PRIMERO») → `NO`.
+11. **Identificadores de resoluciones** (ROJ, ECLI, Id Cendoj, NIG, número de sentencia o de rollo), aunque sean de la propia sentencia → `NO`.
+12. **Fragmentos de fecha** que el detector toma por número («5/11», «21/02») → `NO`.
 
 ## 4. Ejemplos (inventados)
 
@@ -65,3 +71,12 @@ Además de la etiqueta:
 3. Anotar como mucho **90 minutos seguidos**; descansar 10 minutos.
 4. Registrar en `horas.csv` las horas y el número de instancias anotadas por sesión.
 5. Las dudas que se repitan se anotan en la bitácora. Si obligan a cambiar una regla **antes** de `guia-v1`, se cambia aquí. **Después** de `guia-v1`, el cambio es una desviación del protocolo.
+
+## 6. Cambios respecto a la versión 0
+
+Prueba en seco del 7-11-2026 con 60 instancias de las sentencias del chequeo, que no entran en calibración ni en test:
+
+- Regla 3 ampliada: cargos y profesiones sin nombre («Presidente», «Letrada», «Ilma.») → `NO`.
+- Regla 4 aclarada: un span con palabras de más sigue siendo `SI` si contiene un nombre; un trozo de razón social es `NO`.
+- Reglas nuevas 11 (identificadores de resoluciones) y 12 (fragmentos de fecha).
+- Se definen mejor los valores de `rol`; los empleados de una empresa que es parte van a `otro`.
