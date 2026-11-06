@@ -1,9 +1,9 @@
 # Protocolo preregistrado
 
-!!! danger "BORRADOR v0 · pendiente de revisión"
-    Este documento **todavía no está cerrado**. Se cerrará con el tag firmado `preregistro`, una Release y un DOI de Zenodo. Desde ese momento, cualquier cambio se registrará como **desviación** en la bitácora, con fecha y motivo.
+!!! success "Preregistrado"
+    Este protocolo quedó **cerrado el 7-11-2026**, antes de cualquier experimento, con el tag firmado `preregistro` y su Release en GitHub, que tiene DOI en Zenodo. Cualquier cambio posterior se registra como **desviación** en la bitácora, con fecha y motivo.
 
-**Versión:** 0 (borrador) · **Autor:** Andres Leon · **Fecha:** 7-11-2026
+**Versión:** 1 · **Autor:** Andres Leon · **Fecha de cierre:** 7-11-2026
 
 ## 1. Pregunta
 
