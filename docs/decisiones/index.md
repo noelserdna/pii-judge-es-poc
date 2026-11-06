@@ -13,5 +13,7 @@ Cada decisión relevante se registra una vez, con su contexto, las alternativas 
 | [007](ADR-007-licencias.md) | Apache-2.0 para código, CC BY 4.0 para documentación y datos | aceptada | 2026-11-06 |
 | [008](ADR-008-que-se-publica.md) | Qué se publica y qué no | aceptada | 2026-11-06 |
 | [009](ADR-009-cierre.md) | Cierre: firma, fechado externo (DOI) y archivado del repositorio | aceptada | 2026-11-06 |
-| [010](ADR-010-etiqueta-cendoj.md) | Cómo se etiqueta un texto ya disociado | propuesta | 2026-11-06 |
+| [010](ADR-010-etiqueta-cendoj.md) | Cómo se etiqueta un texto ya disociado | aceptada | 2026-11-07 |
 | [011](ADR-011-documentacion.md) | Documentación mínima con trazabilidad: MkDocs, bitácora por sesión, flujo git | aceptada | 2026-11-06 |
+| [012](ADR-012-unidad-de-anotacion.md) | Unidad de anotación: una mención por grupo y muestreo por documento | aceptada | 2026-11-07 |
+| [013](ADR-013-autorizacion-cendoj.md) | El uso del CENDOJ más allá del chequeo queda condicionado a su autorización | aceptada | 2026-11-07 |

@@ -1,2 +1,4 @@
 fecha,paso,horas,tipo,descripcion
 2026-11-06,-1,3,planificacion,Lectura de antecedentes y planificación; revisión del plan por tres perspectivas y consenso
+2026-11-07,0,4,datos,"Chequeo de realidad: aviso legal CENDOJ, selección y descarga de 10 sentencias, detector v0, análisis; ADR-012 y ADR-013"
+2026-11-07,0,1,infraestructura,Firma SSH verificada en GitHub; webhook de Zenodo

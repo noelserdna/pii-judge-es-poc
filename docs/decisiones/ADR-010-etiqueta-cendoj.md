@@ -1,6 +1,6 @@
 # ADR-010 · Cómo se etiqueta un texto ya disociado
 
-**Estado:** propuesta (se confirma tras el chequeo de realidad sobre 10 sentencias) · **Fecha:** 2026-11-06 · **¿Se reutilizaría en trabajos posteriores?** Sí: la regla contrafactual y los roles.
+**Estado:** aceptada (confirmada con el chequeo de realidad del 7-11-2026) · **Fecha:** 2026-11-06 · **¿Se reutilizaría en trabajos posteriores?** Sí: la regla contrafactual y los roles.
 
 ## Contexto
 El CENDOJ no borra los datos personales: **sustituye** los nombres de las partes por otros nombres (p. ej. «D. Eutimio», «Dña. Candelaria») y los identificadores por marcadores («NUM000», «DIRECCION000», «CALLE000»). Los nombres de magistrados, letrados, procuradores y letrados de la Administración de Justicia suelen conservarse. Si la pregunta de anotación fuera literalmente «¿es un dato personal de una persona identificable?», «D. Eutimio» sería **no** (es ficticio) y el modelo aprendería que los nombres de las partes no son datos personales: lo contrario de lo que debe aprender.
@@ -18,4 +18,11 @@ El CENDOJ no borra los datos personales: **sustituye** los nombres de las partes
 
 ## Consecuencias
 - Los positivos del CENDOJ estarán dominados por nombres en posiciones formularias («Magistrado D. …»). La evaluación se desglosa por `rol` para ver si el modelo aprende solo eso.
-- Las categorías IDENTIFICADOR y DIRECCIÓN no tendrán positivos reales en CENDOJ (son marcadores); solo se miden en sintético. Se declara en «Lo que esta PoC NO demuestra».
+- Las categorías IDENTIFICADOR y DIRECCIÓN apenas tendrán positivos reales en CENDOJ (casi siempre son marcadores); se miden sobre todo en sintético. Se declara en «Lo que esta PoC NO demuestra».
+
+## Confirmación con el chequeo de realidad (7-11-2026)
+Sobre 10 sentencias, el patrón descrito se cumple: las partes aparecen con pseudónimos (un mismo pseudónimo puede repetirse más de 200 veces en una sentencia), los nombres completos de magistrados, procuradores, letrados y notarios se conservan, y los marcadores (`DIRECCION000`, `NUM005`…) aparecen en 6 de las 10 sentencias. Además:
+
+- Aparece al menos **un domicilio de una parte que la disociación no tapó**. Según esta regla es un positivo (DIRECCIÓN, `rol = parte`). Nunca se cita en ningún material público.
+- spaCy etiqueta como LOC u ORG algunos nombres de persona, y como PER algunas palabras del texto («FALLAMOS», «Acordaron»). La etiqueta del detector **no** se muestra al anotador, para que no le influya.
+- Algunos spans salen **mal cortados** (medio nombre, o dos nombres seguidos en una lista de magistrados). Regla añadida: si el span contiene una parte reconocible de un nombre de persona, se etiqueta SÍ; si no contiene ninguna, NO.

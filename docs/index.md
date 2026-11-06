@@ -11,7 +11,10 @@ Las herramientas que ocultan datos personales en documentos jurídicos se pasan 
 
 ## Panel de progreso
 
-_Última actualización: 6 de noviembre de 2026 (sesión de planificación)._
+_Última actualización: 7 de noviembre de 2026 (chequeo de realidad)._
+
+!!! warning "Pendiente de un tercero"
+    El uso de sentencias del CENDOJ para construir el conjunto anotado (Paso 3a) espera la autorización de reutilización del CENDOJ ([ADR-013](decisiones/ADR-013-autorizacion-cendoj.md)). Los demás pasos siguen adelante.
 
 ### Criterios de éxito preregistrados — 0 / 3
 
@@ -41,9 +44,10 @@ Leyenda: ⚪ sin datos · 🟢 pasa · 🟡 no concluyente · 🔴 no pasa. Los 
 
 | Indicador | Valor | Objetivo |
 |---|---|---|
-| Sentencias CENDOJ ingeridas | 0 | 20–25 |
+| Sentencias del chequeo de realidad (solo local) | 10 | 10 |
+| Sentencias CENDOJ para el conjunto anotado | 0 | ~25 |
 | Familias sintéticas | 0 | 10–12 |
-| Candidatos anotados | 0 | 1.500 |
+| Grupos anotados (1 mención por grupo, [ADR-012](decisiones/ADR-012-unidad-de-anotacion.md)) | 0 | ~1.700 |
 | Ambiguos excluidos | — | < 5 % |
 | Positivos en el conjunto de test | 0 | ≥ 500 |
 | Acuerdo entre anotaciones (κ) | — | ≥ 0,6 |
@@ -65,7 +69,7 @@ Ver [Aprende](guia/index.md).
 
 | Horas acumuladas | Coste acumulado |
 |---|---|
-| 3 h | 0 € |
+| 8 h | 0 € |
 
 Fuente: [`horas.csv`](https://github.com/noelserdna/pii-judge-es-poc/blob/main/horas.csv) y [`costes.csv`](https://github.com/noelserdna/pii-judge-es-poc/blob/main/costes.csv).
 

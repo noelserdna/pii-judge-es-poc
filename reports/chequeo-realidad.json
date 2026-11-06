@@ -1,0 +1,215 @@
+{
+  "descripcion": "Chequeo de realidad del Paso 0b: detector v0 sobre 10 sentencias del CENDOJ. Solo cifras agregadas; ningún texto.",
+  "detector": "regex v0 + tratamiento (D./Dña.) + spaCy es_core_news_lg 3.8.0 (PER/LOC/ORG)",
+  "documentos": [
+    {
+      "roj": "SAP VA 1581/2025",
+      "jurisdiccion": "civil",
+      "organo": "AP",
+      "caracteres": 25237,
+      "sha256_texto": "2c6df000265724db951118b1981c64983a85f094949e5b634b5e6394f5389b6e",
+      "candidatos": 258,
+      "candidatos_sin_placeholder": 258,
+      "placeholders_en_texto": {},
+      "por_etiqueta": {
+        "NUM_EXPEDIENTE": 16,
+        "ORG": 22,
+        "PER": 161,
+        "LOC": 54,
+        "TELEFONO": 3,
+        "EMAIL": 1,
+        "IBAN": 1
+      }
+    },
+    {
+      "roj": "SAP IB 3220/2025",
+      "jurisdiccion": "civil",
+      "organo": "AP",
+      "caracteres": 30458,
+      "sha256_texto": "a088d315d9351d86a7a26e868d396b9e37b1d8688816b2199340d0a409c22f97",
+      "candidatos": 196,
+      "candidatos_sin_placeholder": 196,
+      "placeholders_en_texto": {},
+      "por_etiqueta": {
+        "NUM_EXPEDIENTE": 49,
+        "ORG": 47,
+        "LOC": 22,
+        "PER": 78
+      }
+    },
+    {
+      "roj": "SAP BU 1133/2025",
+      "jurisdiccion": "civil",
+      "organo": "AP",
+      "caracteres": 60594,
+      "sha256_texto": "0ce72556a855b016408bc3f1436d7d6a28ee53ec7b072e52127a2f2ebe30ecab",
+      "candidatos": 313,
+      "candidatos_sin_placeholder": 311,
+      "placeholders_en_texto": {
+        "DIRECCION": 29,
+        "NUM": 1
+      },
+      "por_etiqueta": {
+        "ORG": 143,
+        "NUM_EXPEDIENTE": 35,
+        "PER": 96,
+        "LOC": 39
+      }
+    },
+    {
+      "roj": "SAP O 2530/2025",
+      "jurisdiccion": "penal",
+      "organo": "AP",
+      "caracteres": 16309,
+      "sha256_texto": "73d3f176bcbca3452e72c5d8d7463a8ff4ecc277432e4f2b89c0894e8bee0673",
+      "candidatos": 122,
+      "candidatos_sin_placeholder": 122,
+      "placeholders_en_texto": {
+        "NUM": 3
+      },
+      "por_etiqueta": {
+        "ORG": 33,
+        "NUM_EXPEDIENTE": 19,
+        "LOC": 30,
+        "PER": 36,
+        "TELEFONO": 1,
+        "EMAIL": 1,
+        "LOC+NUM_EXPEDIENTE": 2
+      }
+    },
+    {
+      "roj": "SAP AB 436/2025",
+      "jurisdiccion": "penal",
+      "organo": "AP",
+      "caracteres": 90492,
+      "sha256_texto": "098f359269104cb2a2fc6072519283fd852e95951f59602a091d972fdc17a78d",
+      "candidatos": 625,
+      "candidatos_sin_placeholder": 608,
+      "placeholders_en_texto": {
+        "NUM": 23,
+        "DIRECCION": 11
+      },
+      "por_etiqueta": {
+        "ORG": 76,
+        "NUM_EXPEDIENTE": 166,
+        "LOC": 117,
+        "PER": 264,
+        "TELEFONO": 2
+      }
+    },
+    {
+      "roj": "SAP SS 740/2025",
+      "jurisdiccion": "penal",
+      "organo": "AP",
+      "caracteres": 120925,
+      "sha256_texto": "d78263545dd7f880d5502cc12ba51dc65d407bcf3120f24ce06ca45d2997d5b7",
+      "candidatos": 661,
+      "candidatos_sin_placeholder": 649,
+      "placeholders_en_texto": {
+        "DIRECCION": 23,
+        "STC": 1
+      },
+      "por_etiqueta": {
+        "ORG": 69,
+        "NUM_EXPEDIENTE": 93,
+        "LOC": 91,
+        "PER": 406,
+        "LOC+NUM_EXPEDIENTE": 2
+      }
+    },
+    {
+      "roj": "STSJ CLM 1322/2025",
+      "jurisdiccion": "social",
+      "organo": "TSJ",
+      "caracteres": 45616,
+      "sha256_texto": "fd8fde6374d998e472d49116fab3065d14914ca8065ff8cd448b91e4842214dc",
+      "candidatos": 231,
+      "candidatos_sin_placeholder": 231,
+      "placeholders_en_texto": {},
+      "por_etiqueta": {
+        "NUM_EXPEDIENTE": 28,
+        "ORG": 121,
+        "LOC": 50,
+        "PER": 30,
+        "EMAIL": 1,
+        "IBAN": 1
+      }
+    },
+    {
+      "roj": "STSJ LR 221/2025",
+      "jurisdiccion": "social",
+      "organo": "TSJ",
+      "caracteres": 20573,
+      "sha256_texto": "509be40f6991ae400cba6577091c2192584f48598386b11bb9ffa7be0e166125",
+      "candidatos": 183,
+      "candidatos_sin_placeholder": 183,
+      "placeholders_en_texto": {},
+      "por_etiqueta": {
+        "NUM_EXPEDIENTE": 43,
+        "ORG": 57,
+        "LOC": 49,
+        "PER": 31,
+        "TELEFONO": 2,
+        "EMAIL": 1
+      }
+    },
+    {
+      "roj": "STSJ CL 4403/2025",
+      "jurisdiccion": "contencioso",
+      "organo": "TSJ",
+      "caracteres": 28091,
+      "sha256_texto": "4da76868cf12841ba4acb1686ddd8870bd9cd5feaebe1a12fb0c716cb75af2b0",
+      "candidatos": 218,
+      "candidatos_sin_placeholder": 218,
+      "placeholders_en_texto": {
+        "NUM": 1
+      },
+      "por_etiqueta": {
+        "NUM_EXPEDIENTE": 68,
+        "ORG": 72,
+        "LOC": 54,
+        "PER": 23,
+        "EMAIL": 1
+      }
+    },
+    {
+      "roj": "STSJ LR 436/2025",
+      "jurisdiccion": "contencioso",
+      "organo": "TSJ",
+      "caracteres": 8738,
+      "sha256_texto": "03f357b63fe31460ebd1fe87b1699f2ad473ff92259dfc94cdff8bb584bd78ec",
+      "candidatos": 74,
+      "candidatos_sin_placeholder": 74,
+      "placeholders_en_texto": {},
+      "por_etiqueta": {
+        "NUM_EXPEDIENTE": 11,
+        "ORG": 21,
+        "LOC": 20,
+        "PER": 18,
+        "TELEFONO": 3,
+        "EMAIL": 1
+      }
+    }
+  ],
+  "totales": {
+    "documentos": 10,
+    "candidatos": 2881,
+    "candidatos_sin_placeholder": 2850,
+    "por_etiqueta": {
+      "PER": 1143,
+      "ORG": 661,
+      "NUM_EXPEDIENTE": 528,
+      "LOC": 526,
+      "TELEFONO": 11,
+      "EMAIL": 6,
+      "LOC+NUM_EXPEDIENTE": 4,
+      "IBAN": 2
+    },
+    "por_jurisdiccion": {
+      "civil": 767,
+      "penal": 1408,
+      "social": 414,
+      "contencioso": 292
+    }
+  }
+}

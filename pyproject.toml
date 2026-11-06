@@ -16,7 +16,11 @@ dependencies = [
 [dependency-groups]
 dev = ["pytest>=8", "ruff>=0.6"]
 docs = ["mkdocs-material>=9.5", "matplotlib>=3.9"]
-detector = ["presidio-analyzer>=2.2", "pdfplumber>=0.11"]
+detector = [
+    "presidio-analyzer>=2.2",
+    "pdfplumber>=0.11",
+    "es-core-news-lg",
+]
 ml = [
     "torch>=2.4",
     "transformers>=4.44",
@@ -31,3 +35,6 @@ testpaths = ["tests"]
 [tool.ruff]
 line-length = 100
 target-version = "py311"
+
+[tool.uv.sources]
+es-core-news-lg = { url = "https://github.com/explosion/spacy-models/releases/download/es_core_news_lg-3.8.0/es_core_news_lg-3.8.0-py3-none-any.whl" }
