@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anotador PII-Judge-ES</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--tx:#1d2330;--mut:#667085;--bd:#e3e6ee;--ac:#3949ab;--mk:#ffe58a;--mkbd:#e0a800;
+  --si:#1b8a5a;--no:#b42318;--amb:#b54708;--sug:#eef1ff}
+@media (prefers-color-scheme:dark){:root{--bg:#12141a;--card:#1b1e27;--tx:#e6e8ef;--mut:#98a2b3;--bd:#2c3140;--ac:#8c9eff;
+  --mk:#5c4a00;--mkbd:#d4a017;--si:#4ade80;--no:#f87171;--amb:#fbbf24;--sug:#232a45}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{position:sticky;top:0;background:var(--card);border-bottom:1px solid var(--bd);padding:10px 16px;z-index:2}
+.top{display:flex;gap:12px;align-items:center;flex-wrap:wrap;max-width:980px;margin:auto}
+.top h1{font-size:16px;margin:0;font-weight:650}
+.badge{font-size:12px;padding:2px 8px;border-radius:99px;background:var(--sug);color:var(--ac);font-weight:600}
+.bar{flex:1;min-width:140px;height:8px;background:var(--bd);border-radius:99px;overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--ac);width:0}
+.cnt{font-variant-numeric:tabular-nums;color:var(--mut);font-size:14px}
+main{max-width:980px;margin:18px auto;padding:0 16px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px 22px}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:13px;margin-bottom:10px}
+.span{font-size:22px;font-weight:700;margin:2px 0 14px}
+.span code{background:var(--mk);border:2px solid var(--mkbd);border-radius:6px;padding:1px 8px}
+.ctx{font-size:17px;line-height:1.75;background:var(--bg);border-radius:10px;padding:14px 16px;border:1px solid var(--bd)}
+.ctx mark{background:var(--mk);color:inherit;border-bottom:3px solid var(--mkbd);padding:1px 3px;border-radius:4px;font-weight:700}
+.sug{margin-top:14px;padding:10px 14px;border-radius:10px;background:var(--sug);font-size:14px}
+.sug b{color:var(--ac)}
+.form{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.form label{display:block;font-size:12px;color:var(--mut);margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em}
+select,input{width:100%;padding:9px 10px;border-radius:9px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font-size:15px}
+.nota{grid-column:1/-1}
+.et-btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.et-btns button{flex:1;min-width:120px;padding:12px;border-radius:10px;border:2px solid var(--bd);background:var(--card);color:var(--tx);
+  font-size:15px;font-weight:650;cursor:pointer}
+.et-btns button.on[data-v=SI]{border-color:var(--si);color:var(--si)}
+.et-btns button.on[data-v=NO]{border-color:var(--no);color:var(--no)}
+.et-btns button.on[data-v=AMBIGUO]{border-color:var(--amb);color:var(--amb)}
+.et-btns button.on[data-v=EXCLUIDO_PLACEHOLDER]{border-color:var(--mut);color:var(--mut)}
+.et-btns kbd,.nav kbd{font-size:11px;opacity:.7;margin-left:6px}
+.nav{display:flex;gap:10px;margin-top:18px;align-items:center}
+.nav button{padding:11px 18px;border-radius:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font-size:15px;cursor:pointer}
+.nav .primary{background:var(--ac);border-color:var(--ac);color:#fff;font-weight:650;flex:1}
+.saved{color:var(--si);font-size:13px;margin-left:auto}
+.help{margin-top:14px;color:var(--mut);font-size:13px}
+.list{display:flex;flex-wrap:wrap;gap:4px;margin-top:16px}
+.list a{width:30px;height:24px;display:grid;place-items:center;border-radius:6px;font-size:11px;text-decoration:none;color:var(--mut);border:1px solid var(--bd)}
+.list a.done-SI{background:color-mix(in srgb,var(--si) 25%,transparent);color:var(--tx)}
+.list a.done-NO{background:color-mix(in srgb,var(--no) 22%,transparent);color:var(--tx)}
+.list a.done-AMBIGUO{background:color-mix(in srgb,var(--amb) 25%,transparent);color:var(--tx)}
+.list a.cur{outline:2px solid var(--ac)}
+.hidden{display:none}
+@media (max-width:640px){.form{grid-template-columns:1fr}.span{font-size:19px}}
+</style>
+</head>
+<body>
+<header><div class="top">
+  <h1>Anotador · PII-Judge-ES</h1><span class="badge" id="modo"></span>
+  <div class="bar"><i id="prog"></i></div><span class="cnt" id="cnt"></span>
+</div></header>
+<main>
+  <div class="card">
+    <div class="meta"><span id="iid"></span><span id="tiempo"></span></div>
+    <div class="span">¿Es dato personal? <code id="span"></code></div>
+    <div class="ctx" id="ctx"></div>
+    <div class="sug" id="sug"></div>
+
+    <div class="et-btns" id="etbtns">
+      <button data-v="SI">SÍ <kbd>S</kbd></button>
+      <button data-v="NO">NO <kbd>N</kbd></button>
+      <button data-v="AMBIGUO">AMBIGUO <kbd>A</kbd></button>
+      <button data-v="EXCLUIDO_PLACEHOLDER">MARCADOR <kbd>M</kbd></button>
+    </div>
+
+    <div class="form">
+      <div><label>Categoría</label><select id="categoria">
+        <option value="">—</option><option>PERSONA</option><option>IDENTIFICADOR</option>
+        <option>DIRECCION</option><option>CONTACTO</option><option>OTRO</option></select></div>
+      <div><label>Rol</label><select id="rol">
+        <option value="">—</option><option>parte</option><option>profesional</option>
+        <option>judicial</option><option>otro</option></select></div>
+      <div><label>Etiqueta</label><select id="etiqueta">
+        <option value="">—</option><option>SI</option><option>NO</option><option>AMBIGUO</option>
+        <option>EXCLUIDO_PLACEHOLDER</option></select></div>
+      <div class="nota"><label>Nota (opcional)</label><input id="nota" placeholder="Solo si la decisión no es obvia"></div>
+    </div>
+
+    <div class="nav">
+      <button id="prev">← Anterior</button>
+      <button class="primary" id="ok">Guardar y siguiente <kbd>Enter</kbd></button>
+      <button id="next">Siguiente →</button>
+      <span class="saved" id="saved"></span>
+    </div>
+    <div class="help">Atajos: <b>S</b> sí · <b>N</b> no · <b>A</b> ambiguo · <b>M</b> marcador · <b>1–4</b> rol (parte, profesional, judicial, otro) ·
+      <b>Enter</b> guardar y seguir · <b>←/→</b> moverse. <a href="https://noelserdna.github.io/pii-judge-es-poc/guia-anotacion/" target="_blank">Guía de anotación</a></div>
+    <div class="list" id="list"></div>
+  </div>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+let D, i=0, t0=0, eligioPropia=false;
+const ROLES=["parte","profesional","judicial","otro"];
+
+async function cargar(){
+  D=await (await fetch('/api/datos')).json();
+  $('modo').textContent = D.modo==='ciego' ? 'modo ciego' : 'modo revisión';
+  const pend=D.items.findIndex(x=>!D.anotaciones[x.id]); i = pend<0?0:pend; pintar();
+}
+function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+function pintar(){
+  const it=D.items[i], a=D.anotaciones[it.id], s=D.sugerencias[it.id];
+  const m=it.contexto.match(/⟦([\s\S]*?)⟧/);
+  $('span').textContent = m?m[1]:'';
+  $('ctx').innerHTML = esc(it.contexto).replace(/⟦([\s\S]*?)⟧/,'<mark>$1</mark>');
+  $('iid').textContent = it.id + (a?' · guardada':'');
+  const base = a || (D.modo==='revision' && s) || {etiqueta:'',categoria:'',rol:'',nota:''};
+  ['etiqueta','categoria','rol','nota'].forEach(k=>$(k).value = base[k]||'');
+  eligioPropia=!!a; marcarBotones(); mostrarSug();
+  const hechas=Object.keys(D.anotaciones).length;
+  $('cnt').textContent=`${hechas} / ${D.items.length}`; $('prog').style.width=(100*hechas/D.items.length)+'%';
+  $('list').innerHTML = D.items.map((x,j)=>{const an=D.anotaciones[x.id];
+    return `<a href="#" data-j="${j}" class="${an?'done-'+an.etiqueta:''} ${j===i?'cur':''}">${j+1}</a>`}).join('');
+  $('saved').textContent=''; t0=performance.now();
+  document.querySelector('.ctx mark')?.scrollIntoView({block:'nearest'});
+}
+function mostrarSug(){
+  const s=D.sugerencias[D.items[i].id];
+  if(!s){$('sug').classList.add('hidden');return}
+  $('sug').classList.remove('hidden');
+  const txt=`Sugerencia: <b>${s.etiqueta}</b>${s.categoria?' · '+s.categoria:''}${s.rol?' · '+s.rol:''}${s.nota?' — <i>'+esc(s.nota)+'</i>':''}`;
+  $('sug').innerHTML = (D.modo==='ciego' && !eligioPropia) ? 'La sugerencia se mostrará cuando elijas tu etiqueta.' : txt;
+}
+function marcarBotones(){document.querySelectorAll('#etbtns button').forEach(b=>b.classList.toggle('on',b.dataset.v===$('etiqueta').value))}
+function elegir(v){$('etiqueta').value=v; if(v!=='SI'){$('categoria').value='';$('rol').value=''}
+  else if(!$('categoria').value){$('categoria').value='PERSONA'}
+  eligioPropia=true; marcarBotones(); mostrarSug();}
+async function guardar(){
+  const it=D.items[i], s=D.sugerencias[it.id]||{};
+  const d={id:it.id, etiqueta:$('etiqueta').value, categoria:$('categoria').value, rol:$('rol').value, nota:$('nota').value,
+    ms:Math.round(performance.now()-t0)};
+  if(!d.etiqueta){$('saved').textContent='Elige una etiqueta';return false}
+  d.acepto_sugerencia = s.etiqueta===d.etiqueta && (s.categoria||'')===d.categoria && (s.rol||'')===d.rol;
+  const r=await (await fetch('/api/guardar',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})).json();
+  if(r.ok){D.anotaciones[it.id]=d; return true} return false;
+}
+async function okSiguiente(){ if(await guardar()){ if(i<D.items.length-1){i++;pintar()} else {pintar(); $('saved').textContent='¡Terminado! Puedes cerrar esta pestaña.'} } }
+$('ok').onclick=okSiguiente;
+$('prev').onclick=()=>{if(i>0){i--;pintar()}};
+$('next').onclick=()=>{if(i<D.items.length-1){i++;pintar()}};
+$('etiqueta').onchange=()=>elegir($('etiqueta').value);
+document.querySelectorAll('#etbtns button').forEach(b=>b.onclick=()=>elegir(b.dataset.v));
+$('list').onclick=e=>{const j=e.target.dataset.j; if(j!==undefined){e.preventDefault(); i=+j; pintar()}};
+document.addEventListener('keydown',e=>{
+  if(e.target.id==='nota'){ if(e.key==='Enter'){e.preventDefault();okSiguiente()} return }
+  const k=e.key.toLowerCase();
+  if(k==='s')elegir('SI'); else if(k==='n')elegir('NO'); else if(k==='a')elegir('AMBIGUO'); else if(k==='m')elegir('EXCLUIDO_PLACEHOLDER');
+  else if(['1','2','3','4'].includes(k)){$('rol').value=ROLES[+k-1]}
+  else if(e.key==='Enter'){e.preventDefault();okSiguiente()}
+  else if(e.key==='ArrowLeft'){$('prev').click()} else if(e.key==='ArrowRight'){$('next').click()}
+});
+cargar();
+</script>
+</body>
+</html>
