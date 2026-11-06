@@ -11,6 +11,7 @@ url: "https://noelserdna.github.io/pii-judge-es-poc/"
 license: Apache-2.0
 date-released: "2026-11-06"
 version: "0.1.0"
+doi: "10.5281/zenodo.24024318"
 keywords:
   - datos personales
   - anonimización

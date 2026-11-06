@@ -4,3 +4,4 @@ fecha,paso,horas,tipo,descripcion
 2026-11-07,0,1,infraestructura,Firma SSH verificada en GitHub; webhook de Zenodo
 2026-11-07,0,2,documentacion,"Borrador del protocolo v0 (criterios, cálculo muestral, contingencia CENDOJ) y guía de anotación v0"
 2026-11-07,0,0.5,legal,"Lectura del Reglamento 3/2010 y consulta de reutilización enviada al CENDOJ"
+2026-11-07,0,3,documentacion,"Protocolo v1, tag preregistro, Release y DOI; capítulo 0 de la guía didáctica y figura de la regla del tres"

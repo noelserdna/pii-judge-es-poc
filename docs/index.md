@@ -7,11 +7,11 @@ Las herramientas que ocultan datos personales en documentos jurídicos se pasan 
 !!! info "Qué es esto"
     Un trabajo **exploratorio, independiente, cerrado y fechado**, hecho con fondos propios por una persona. Todo el proceso se documenta aquí en tiempo real: lo que se hace, lo que se decide y lo que se aprende, incluidos los fallos. Al cerrar, el repositorio se archiva.
 
-    [Protocolo preregistrado](protocolo.md) · [Bitácora](blog/index.md) · [Decisiones](decisiones/index.md) · [Aprende](guia/index.md) · [Repositorio](https://github.com/noelserdna/pii-judge-es-poc)
+    [Protocolo preregistrado](protocolo.md) ([DOI 10.5281/zenodo.24024318](https://doi.org/10.5281/zenodo.24024318)) · [Bitácora](blog/index.md) · [Decisiones](decisiones/index.md) · [Aprende](guia/index.md) · [Repositorio](https://github.com/noelserdna/pii-judge-es-poc)
 
 ## Panel de progreso
 
-_Última actualización: 7 de noviembre de 2026 (chequeo de realidad)._
+_Última actualización: 7 de noviembre de 2026 (preregistro publicado; Paso 0 cerrado)._
 
 !!! warning "Pendiente de un tercero"
     El uso de sentencias del CENDOJ para construir el conjunto anotado (Paso 3a) espera la respuesta del CENDOJ a la consulta enviada el **7-11-2026**. Previsiblemente no hará falta autorización (art. 4.1 del Reglamento 3/2010: investigación sin finalidad comercial), pero hasta que lo confirmen rige el [ADR-013](decisiones/ADR-013-autorizacion-cendoj.md), con fecha límite del 24-11. Los demás pasos siguen adelante.
@@ -30,8 +30,8 @@ Leyenda: ⚪ sin datos · 🟢 pasa · 🟡 no concluyente · 🔴 no pasa. Los 
 
 | # | Paso | Previsto | Real | Estado |
 |---|---|---|---|---|
-| 0 | Proyecto, repo, chequeo de realidad y preregistro | 7–10 nov | — | 🔵 en curso |
-| 1 | Guía de anotación v1 | 11–12 nov | — | ⚪ pendiente |
+| 0 | Proyecto, repo, chequeo de realidad y preregistro | 7–10 nov | 6–7 nov | 🟢 hecho |
+| 1 | Guía de anotación v1 | 11–12 nov | — | 🔵 siguiente |
 | 2 | Detector de alta sensibilidad + Presidio | 12–14 nov | — | ⚪ pendiente |
 | 3 | Datos: CENDOJ, sintéticos, candidatos, anotación | 15–24 nov | — | ⚪ pendiente |
 | 4 | Congelado de etiquetas | 25 nov | — | ⚪ pendiente |
@@ -56,12 +56,12 @@ Leyenda: ⚪ sin datos · 🟢 pasa · 🟡 no concluyente · 🔴 no pasa. Los 
 
 | Hito | Tag | Fecha | DOI |
 |---|---|---|---|
-| Protocolo cerrado | `preregistro` | — | — |
+| Protocolo cerrado | [`preregistro`](https://github.com/noelserdna/pii-judge-es-poc/releases/tag/preregistro) | 7-11-2026 | [10.5281/zenodo.24024318](https://doi.org/10.5281/zenodo.24024318) |
 | Guía de anotación cerrada | `guia-v1` | — | — |
 | Etiquetas congeladas | `anotacion-congelada` | — | — |
 | Informe final | `poc-v1` | — | — |
 
-### Guía didáctica — 0 / 9 capítulos
+### Guía didáctica — 1 / 9 capítulos
 
 Ver [Aprende](guia/index.md).
 
@@ -69,7 +69,7 @@ Ver [Aprende](guia/index.md).
 
 | Horas acumuladas | Coste acumulado |
 |---|---|
-| 10,5 h | 0 € |
+| 13,5 h | 0 € |
 
 Fuente: [`horas.csv`](https://github.com/noelserdna/pii-judge-es-poc/blob/main/horas.csv) y [`costes.csv`](https://github.com/noelserdna/pii-judge-es-poc/blob/main/costes.csv).
 

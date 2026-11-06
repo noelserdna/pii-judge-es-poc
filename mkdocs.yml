@@ -102,5 +102,6 @@ nav:
       - ADR-013 Autorización CENDOJ: decisiones/ADR-013-autorizacion-cendoj.md
   - Aprende:
       - guia/index.md
+      - 0 · Un experimento honesto: guia/00-experimento-honesto.md
       - Glosario: guia/glosario.md
   - Informe: informe.md

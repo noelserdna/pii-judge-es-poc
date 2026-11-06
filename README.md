@@ -1,5 +1,7 @@
 # PII-Judge-ES · prueba de concepto
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24024318.svg)](https://doi.org/10.5281/zenodo.24024318)
+
 **Estado:** prueba de concepto exploratoria e independiente, iniciada el 6 de noviembre de 2026. Cierre previsto en diciembre de 2026; al cerrar, el repositorio se archiva y queda de solo lectura.
 **Financiación:** fondos propios de Andres Leon. Sin ayuda pública ni solicitud asociada.
 **Página del proyecto (bitácora, decisiones, guía didáctica):** https://noelserdna.github.io/pii-judge-es-poc/
@@ -10,7 +12,7 @@ Las herramientas que ocultan datos personales en sentencias y documentos adminis
 
 **PII-Judge-ES** es la idea de poner, *después* de los detectores existentes (expresiones regulares, reconocimiento de entidades), un **validador pequeño** que mire cada candidato en su contexto y diga si de verdad es un dato personal. No es un detector: solo juzga lo que los detectores le pasan.
 
-Esta prueba de concepto responde a **una sola pregunta**, fijada por escrito antes de hacer ningún experimento (ver `docs/protocolo.md` y el tag `preregistro`):
+Esta prueba de concepto responde a **una sola pregunta**, fijada por escrito antes de hacer ningún experimento (ver `docs/protocolo.md`, el tag firmado `preregistro` y su copia archivada con DOI [10.5281/zenodo.24024318](https://doi.org/10.5281/zenodo.24024318)):
 
 > ¿Un encoder de ≤ 100 MB en INT8, ejecutado en CPU, elimina al menos el 25 % de los falsos positivos del detector manteniendo los falsos descartes por debajo del 1 %, y lo hace mejor que una regresión logística?
 
