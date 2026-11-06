@@ -69,7 +69,7 @@ Ver [Aprende](guia/index.md).
 
 | Horas acumuladas | Coste acumulado |
 |---|---|
-| 8 h | 0 € |
+| 10 h | 0 € |
 
 Fuente: [`horas.csv`](https://github.com/noelserdna/pii-judge-es-poc/blob/main/horas.csv) y [`costes.csv`](https://github.com/noelserdna/pii-judge-es-poc/blob/main/costes.csv).
 
