@@ -14,7 +14,7 @@ Las herramientas que ocultan datos personales en documentos jurídicos se pasan 
 _Última actualización: 7 de noviembre de 2026 (chequeo de realidad)._
 
 !!! warning "Pendiente de un tercero"
-    El uso de sentencias del CENDOJ para construir el conjunto anotado (Paso 3a) espera la autorización de reutilización del CENDOJ ([ADR-013](decisiones/ADR-013-autorizacion-cendoj.md)). Los demás pasos siguen adelante.
+    El uso de sentencias del CENDOJ para construir el conjunto anotado (Paso 3a) espera la respuesta del CENDOJ a la consulta enviada el **7-11-2026**. Previsiblemente no hará falta autorización (art. 4.1 del Reglamento 3/2010: investigación sin finalidad comercial), pero hasta que lo confirmen rige el [ADR-013](decisiones/ADR-013-autorizacion-cendoj.md), con fecha límite del 24-11. Los demás pasos siguen adelante.
 
 ### Criterios de éxito preregistrados — 0 / 3
 
@@ -69,7 +69,7 @@ Ver [Aprende](guia/index.md).
 
 | Horas acumuladas | Coste acumulado |
 |---|---|
-| 10 h | 0 € |
+| 10,5 h | 0 € |
 
 Fuente: [`horas.csv`](https://github.com/noelserdna/pii-judge-es-poc/blob/main/horas.csv) y [`costes.csv`](https://github.com/noelserdna/pii-judge-es-poc/blob/main/costes.csv).
 

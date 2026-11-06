@@ -24,3 +24,6 @@ El plan preveía «revisar el aviso legal» pero no contaba con esta última con
 ## Consecuencias
 - El calendario del Paso 3 depende de un tercero. Se registra la fecha de la solicitud y la de la respuesta en la bitácora.
 - Las 10 sentencias del chequeo no se reutilizan como conjunto anotado salvo que la autorización lo cubra.
+
+## Seguimiento
+- **7-11-2026:** consulta enviada a `cendoj@poderjudicial.es`. Al prepararla se encontró que el **artículo 4.1 del Reglamento 3/2010** del CGPJ exime de licencia o autorización la reutilización por **personas físicas** en **investigación científica sin finalidad comercial**, con las obligaciones generales del artículo 3.6 (artículo 4.3): no alterar el contenido, citar la fuente y la fecha, y respetar la disociación. Este proyecto encaja en ese supuesto. La consulta pide confirmarlo. La decisión y la contingencia del 24-11 se mantienen hasta tener respuesta.

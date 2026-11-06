@@ -48,18 +48,25 @@ Las cifras completas, sin ningún texto, están en [`reports/chequeo-realidad.js
 - [ADR-012](../../decisiones/ADR-012-unidad-de-anotacion.md): unidad de anotación = una mención por grupo; muestreo de hasta 70 grupos por sentencia.
 - [ADR-013](../../decisiones/ADR-013-autorizacion-cendoj.md): el Paso 3a queda bloqueado hasta tener la autorización de reutilización del CENDOJ, con un plan B si no llega.
 
+## Actualización: consulta enviada al CENDOJ
+
+- **Fecha de envío:** 7-11-2026, a `cendoj@poderjudicial.es`, que es el correo general del CENDOJ en poderjudicial.es. No se encontró ningún canal específico de reutilización.
+- **Qué se descubrió al prepararla:** el [Reglamento 3/2010 del CGPJ](https://www.boe.es/eli/es/a/2010/10/28/(2)), en su artículo 4.1, permite reutilizar las sentencias **sin licencia ni autorización** cuando lo hacen **personas físicas** en actividades de **investigación científica sin finalidad comercial**, y el artículo 4.3 mantiene las obligaciones generales del artículo 3.6: no alterar el contenido, citar la fuente y la fecha, y no deshacer la disociación. Por eso el mensaje no pide una licencia: pide **confirmar** que este uso encaja en el artículo 4.1 y, si no encaja, que indiquen el procedimiento.
+- **Qué se mantiene:** hasta que contesten sigue vigente el [ADR-013](../../decisiones/ADR-013-autorizacion-cendoj.md), con su fecha límite del 24-11. Lectura propia de la norma no es lo mismo que confirmación.
+- **Lo aprendido:** antes de dar por hecho que algo necesita permiso, hay que leer la norma que lo regula. El aviso legal del buscador resume, pero no sustituye, al reglamento.
+
 ## Desviaciones del protocolo
 
 No aplica: el protocolo todavía no está cerrado. Precisamente por eso estos cambios se incorporan **antes** del preregistro y no cuentan como desviación.
 
 ## Siguiente paso
 
-- Solicitar al CENDOJ la autorización de reutilización (la presenta el autor).
+- ~~Solicitar al CENDOJ la autorización de reutilización~~: consulta enviada el 7-11-2026; pendiente de respuesta.
 - Paso 0c: redactar el protocolo con estas cifras (cálculo muestral, unidad de anotación, criterios C1–C3) y la guía de anotación v0. Después, el tag `preregistro`, la Release y el DOI.
 
 ## Horas
 
-5 h (chequeo 4 h · infraestructura 1 h).
+5,5 h (chequeo 4 h · infraestructura 1 h · consulta al CENDOJ 0,5 h). Los borradores del protocolo y la guía (2 h) se cuentan aparte en `horas.csv`.
 
 ## Enlaces
 
