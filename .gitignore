@@ -1,0 +1,24 @@
+# Entornos y caches
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+site/
+
+# Datos que NO se publican (textos del CENDOJ y candidatos con contexto)
+data/cendoj/raw/
+data/cendoj/candidates/
+data/synth/candidates/
+
+# Modelos
+checkpoints/
+*.onnx
+*.safetensors
+*.bin
+*.pt
+
+# Locales
+.env
+*.local.*

@@ -1,0 +1,17 @@
+Documentación, bitácora, guía didáctica, anotaciones y datos sintéticos de este
+repositorio (carpetas docs/, data/synth/, data/cendoj/annot/, data/cendoj/manifiesto-cendoj.csv
+y los ficheros horas.csv y costes.csv)
+
+Copyright (c) 2026 Andres Leon
+
+Licencia Creative Commons Atribución 4.0 Internacional (CC BY 4.0).
+
+Usted es libre de compartir y adaptar el material para cualquier propósito,
+incluso comercial, siempre que reconozca la autoría de forma adecuada,
+proporcione un enlace a la licencia e indique si se han realizado cambios.
+
+Texto legal completo: https://creativecommons.org/licenses/by/4.0/legalcode.es
+Resumen: https://creativecommons.org/licenses/by/4.0/deed.es
+
+El código fuente (src/, tests/, tools/, notebooks/) se licencia aparte bajo
+Apache-2.0; véase el fichero LICENSE.

@@ -1,0 +1,33 @@
+[project]
+name = "pii-judge-es-poc"
+version = "0.1.0"
+description = "Prueba de concepto: validador contextual de candidatos a dato personal en documentos jurídicos en español"
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Andres Leon", email = "noelserdna@gmail.com" }]
+dependencies = [
+    "pandas>=2.2",
+    "pyyaml>=6.0",
+    "scikit-learn>=1.5",
+    "spacy>=3.8",
+]
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.6"]
+docs = ["mkdocs-material>=9.5", "matplotlib>=3.9"]
+detector = ["presidio-analyzer>=2.2", "pdfplumber>=0.11"]
+ml = [
+    "torch>=2.4",
+    "transformers>=4.44",
+    "datasets>=3.0",
+    "optimum[onnxruntime]>=1.21",
+    "onnxruntime>=1.19",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

@@ -1,0 +1,104 @@
+site_name: PII-Judge-ES · prueba de concepto
+site_url: https://noelserdna.github.io/pii-judge-es-poc/
+site_description: Bitácora, decisiones y guía didáctica de una prueba de concepto de validación contextual de datos personales en documentos jurídicos en español
+site_author: Andres Leon
+repo_url: https://github.com/noelserdna/pii-judge-es-poc
+repo_name: noelserdna/pii-judge-es-poc
+edit_uri: edit/main/docs/
+copyright: "© 2026 Andres Leon · Documentación CC BY 4.0 · Código Apache-2.0"
+
+theme:
+  name: material
+  language: es
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+    - toc.follow
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Modo oscuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Modo claro
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search:
+      lang: es
+  - blog:
+      blog_dir: blog
+      blog_toc: true
+      post_date_format: long
+      post_url_format: "{date}/{slug}"
+      archive: true
+      categories: true
+      pagination_per_page: 10
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - footnotes
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.mark
+  - pymdownx.caret
+  - pymdownx.tilde
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+nav:
+  - Inicio: index.md
+  - Protocolo: protocolo.md
+  - Guía de anotación: guia-anotacion.md
+  - Bitácora:
+      - blog/index.md
+  - Decisiones:
+      - decisiones/index.md
+      - ADR-001 PoC independiente: decisiones/ADR-001-poc-independiente.md
+      - ADR-002 Repo público: decisiones/ADR-002-repo-publico.md
+      - ADR-003 Datos: decisiones/ADR-003-datos.md
+      - ADR-004 Detector: decisiones/ADR-004-detector.md
+      - ADR-005 Cómputo: decisiones/ADR-005-computo.md
+      - ADR-006 Modelo: decisiones/ADR-006-modelo.md
+      - ADR-007 Licencias: decisiones/ADR-007-licencias.md
+      - ADR-008 Qué se publica: decisiones/ADR-008-que-se-publica.md
+      - ADR-009 Cierre: decisiones/ADR-009-cierre.md
+      - ADR-010 Etiqueta CENDOJ: decisiones/ADR-010-etiqueta-cendoj.md
+      - ADR-011 Documentación: decisiones/ADR-011-documentacion.md
+  - Aprende:
+      - guia/index.md
+      - Glosario: guia/glosario.md
+  - Informe: informe.md

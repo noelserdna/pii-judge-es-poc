@@ -1,0 +1,1 @@
+id,fecha,commit,modelo,variante,semilla,epocas,lr,batch,max_len,conjunto,pr_auc,fp_eliminados_pct,fnr_pct,notas

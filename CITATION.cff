@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "Si utiliza este trabajo, cítelo como se indica."
+title: "PII-Judge-ES: prueba de concepto de un validador contextual de datos personales en documentos jurídicos en español"
+type: software
+authors:
+  - family-names: "Leon"
+    given-names: "Andres"
+    email: "noelserdna@gmail.com"
+repository-code: "https://github.com/noelserdna/pii-judge-es-poc"
+url: "https://noelserdna.github.io/pii-judge-es-poc/"
+license: Apache-2.0
+date-released: "2026-11-06"
+version: "0.1.0"
+keywords:
+  - datos personales
+  - anonimización
+  - seudonimización
+  - procesamiento del lenguaje natural
+  - español jurídico
+  - prueba de concepto
+abstract: >
+  Prueba de concepto exploratoria e independiente, financiada con fondos propios,
+  que evalúa si un encoder de 100 MB o menos puede reducir los falsos positivos de
+  detectores de datos personales en sentencias españolas sin descartar datos
+  personales verdaderos por encima de un límite fijado de antemano.
