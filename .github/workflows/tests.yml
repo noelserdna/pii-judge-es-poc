@@ -2,9 +2,16 @@ name: Tests
 
 on:
   pull_request:
+  workflow_dispatch:
   push:
     branches: [main]
-    paths: ["src/**", "tests/**", "pyproject.toml", "uv.lock"]
+    paths:
+      - "src/**"
+      - "tests/**"
+      - "data/**"
+      - "pyproject.toml"
+      - "uv.lock"
+      - ".github/workflows/tests.yml"
 
 jobs:
   pytest:
