@@ -21,9 +21,9 @@ sh("rm -rf /content/repo && git clone -q --depth 1 https://github.com/noelserdna
 sh("pip -q install 'transformers>=4.44,<5' scikit-learn 2>&1 | tail -1")
 sys.path.insert(0, "/content/repo")
 
-from pathlib import Path  # noqa: E402
+from pathlib import Path
 
-from src.data.instancias import guardar, instancias_sinteticas  # noqa: E402
+from src.data.instancias import guardar, instancias_sinteticas
 
 xs = [x for x in instancias_sinteticas(Path("/content/repo/data/synth")) if x["particion"] == "train"]
 docs = sorted({x["doc_id"] for x in xs})
