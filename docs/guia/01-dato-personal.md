@@ -50,15 +50,17 @@ No se juzga si el nombre concreto es real, sino **el papel que cumple** en el te
 
 **Definición:**
 
-$$\kappa = \frac{p_o - p_e}{1 - p_e}$$
+```text
+κ = (po − pe) / (1 − pe)
+```
 
-donde $p_o$ es la proporción de coincidencias observada y $p_e$ la que se esperaría por azar a partir de cuántas veces usa cada uno cada etiqueta. Con κ = 1 el acuerdo es perfecto; con κ = 0, no es mejor que el azar.
+donde **po** es la proporción de coincidencias observada y **pe** la que se esperaría por azar a partir de cuántas veces usa cada uno cada etiqueta. Con κ = 1 el acuerdo es perfecto; con κ = 0, no es mejor que el azar.
 
 **Ejemplo real de este proyecto** (prueba ciega, 30 instancias):
 
 - La IA dijo `NO` 22 veces, `SI` 7 y `AMBIGUO` 1. El humano dijo `NO` 23 y `SI` 7.
-- $p_o$ = 29/30 = 0,967.
-- $p_e$ = (22·23 + 7·7) / 30² = 0,617.
+- po = 29/30 = 0,967.
+- pe = (22·23 + 7·7) / 30² = 0,617.
 - **κ = (0,967 − 0,617) / (1 − 0,617) = 0,91.**
 
 Con el 96,7 % de coincidencias, κ baja a 0,91 porque buena parte del acuerdo era fácil: la mayoría de las instancias son `NO`.
@@ -96,14 +98,17 @@ Distribución de las 90 instancias de prueba, agrupadas y con una mención por g
 | Qué era | Cuántas | Etiqueta |
 |---|---|---|
 | Nombres de partes (pseudónimos) | 4 | SÍ · parte |
-| Nombres de abogados, procuradores y peritos | 9 | SÍ · profesional |
+| Nombres de abogados, procuradores y peritos | 7 | SÍ · profesional |
 | Nombres de magistrados y fiscales | 4 | SÍ · judicial |
+| Otras personas (una empleada de una empresa que es parte) | 1 | SÍ · otro |
 | Teléfonos, correos, IBAN y direcciones **del juzgado** | 17 | NO |
-| Números de sentencias, recursos y leyes citadas | 17 | NO |
-| Órganos, empresas, lugares genéricos | 20 | NO |
-| Palabras corrientes y trozos mal cortados («FALLAMOS», «Segundo») | 19 | NO |
+| Números de sentencias, recursos, leyes y procedimientos | 21 | NO |
+| Órganos, empresas y lugares genéricos | 17 | NO |
+| Cargos y tratamientos sin nombre («Presidente», «Letrado», «Ilma.») | 5 | NO |
+| Palabras corrientes, encabezados y trozos mal cortados («FALLAMOS», «Segundo») | 14 | NO |
+| **Total** | **90** | |
 
-Solo **1 de cada 5** candidatos es un dato personal, y todos los identificadores de contacto que encontró el detector eran del propio juzgado. Por eso hace falta un validador.
+Solo **16 de 90** candidatos (menos de 1 de cada 5) son datos personales, y todos los identificadores de contacto que encontró el detector eran del propio juzgado. Por eso hace falta un validador.
 
 ## Cómo se hace
 
@@ -159,7 +164,7 @@ Solo **1 de cada 5** candidatos es un dato personal, y todos los identificadores
     «DIRECCION000» es un marcador → `EXCLUIDO_PLACEHOLDER`. «D. Eutimio» es un pseudónimo en el papel de nombre de una parte → `SI`, PERSONA, parte.
 
 ??? question "2. Dos anotadores coinciden en el 95 % de 100 casos, pero el 94 % de los casos son «NO». ¿Es buen acuerdo?"
-    No necesariamente. Si los dos dicen casi siempre «NO», $p_e$ es muy alto (≈ 0,89) y κ puede quedarse en torno a 0,5. Por eso se informa κ y no solo el porcentaje.
+    No necesariamente. Si los dos dicen casi siempre «NO», pe es muy alto (≈ 0,89) y κ puede quedarse en torno a 0,5. Por eso se informa κ y no solo el porcentaje.
 
 ??? question "3. ¿Seudonimizar un documento lo saca del RGPD?"
     No. Los datos seudonimizados siguen siendo datos personales (art. 4.5 y considerando 26 del RGPD). Solo la anonimización efectiva, evaluando el riesgo de reidentificación, lo saca.
