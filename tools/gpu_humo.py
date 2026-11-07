@@ -87,11 +87,11 @@ def main():
     for batch, fp16, gc in configs:
         try:
             pps, pico, eps = entrenar(a.modelo, batch, a.max_len, fp16, grad_ckpt=gc)
-            print(f"batch {batch:>2} · fp16 {str(fp16):5} · grad_ckpt {str(gc):5} → {pps:5.2f} pasos/s · "
+            print(f"batch {batch:>2} · fp16 {fp16!s:5} · grad_ckpt {gc!s:5} → {pps:5.2f} pasos/s · "
                   f"{eps:6.1f} ejemplos/s · pico GPU {pico:6.0f} MiB")
         except torch.OutOfMemoryError:
             torch.cuda.empty_cache()
-            print(f"batch {batch:>2} · fp16 {str(fp16):5} · grad_ckpt {str(gc):5} → SIN MEMORIA")
+            print(f"batch {batch:>2} · fp16 {fp16!s:5} · grad_ckpt {gc!s:5} → SIN MEMORIA")
     print(f"inferencia CPU (4 hilos, FP32, lotes de 32): {inferencia_cpu(a.modelo, a.max_len):.1f} ejemplos/s")
 
 

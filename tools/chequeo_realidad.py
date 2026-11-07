@@ -49,9 +49,9 @@ TRATAMIENTO = re.compile(
 )
 ROL_JUDICIAL = re.compile(
     r"(magistrad|ponente|presidente|letrad[oa] de la administraci|secretari[oa] judicial|juez|jueza)",
-    re.I,
+    re.IGNORECASE,
 )
-ROL_PROFESIONAL = re.compile(r"(procurador|letrad[oa]|abogad[oa]|perit[oa]|graduad[oa] social)", re.I)
+ROL_PROFESIONAL = re.compile(r"(procurador|letrad[oa]|abogad[oa]|perit[oa]|graduad[oa] social)", re.IGNORECASE)
 
 
 def dni_valido(s: str) -> bool:
