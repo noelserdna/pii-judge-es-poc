@@ -13,9 +13,9 @@ from pathlib import Path
 import matplotlib
 
 matplotlib.use("Agg")
-import matplotlib.pyplot as plt  # noqa: E402
-import numpy as np  # noqa: E402
-from scipy.stats import beta  # noqa: E402
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy.stats import beta
 
 SALIDA = Path(__file__).resolve().parents[2] / "docs" / "guia" / "img" / "regla_del_tres.png"
 
@@ -38,10 +38,10 @@ def main() -> None:
     ax.text(1000, 2.55, "2,5 % (límite de C2)", ha="right", va="bottom", fontsize=9, color="#555")
     ax.axvline(299, color="#3949ab", lw=0.8, alpha=0.5)
     ax.annotate("299 positivos sin ningún fallo\n→ cota = 1 % (regla del tres)", xy=(299, 1.0), xytext=(340, 5.2),
-                fontsize=9, arrowprops=dict(arrowstyle="->", color="#3949ab"), color="#3949ab")
+                fontsize=9, arrowprops={"arrowstyle": "->", "color": "#3949ab"}, color="#3949ab")
     ax.axvline(500, color="#e53935", lw=0.8, alpha=0.5)
     ax.annotate("500 positivos: C2 pasa\ncon hasta 5 fallos", xy=(500, 2.09), xytext=(600, 6.5),
-                fontsize=9, arrowprops=dict(arrowstyle="->", color="#e53935"), color="#e53935")
+                fontsize=9, arrowprops={"arrowstyle": "->", "color": "#e53935"}, color="#e53935")
     ax.set_ylim(0, 12)
     ax.set_xlim(20, 1000)
     ax.set_xlabel("Positivos en el conjunto de test (n)")

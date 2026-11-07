@@ -19,7 +19,7 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(RAIZ))
 
-from src.annotate.muestreo import agrupar, marcar_contexto, muestrear  # noqa: E402
+from src.annotate.muestreo import agrupar, marcar_contexto, muestrear
 
 DIR = RAIZ / "data" / "cendoj" / "raw" / "chequeo"
 SEMILLA = 20261107

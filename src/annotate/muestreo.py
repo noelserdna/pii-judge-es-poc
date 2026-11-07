@@ -10,7 +10,7 @@ from __future__ import annotations
 import random
 import re
 from collections import defaultdict
-from typing import Iterable
+from collections.abc import Iterable
 
 TRATAMIENTOS = re.compile(
     r"^(?:(?:el|la)\s+)?(?:srta\.?|sra\.?|sr\.?|d\.ª|dª|dña\.?|doña|don|d/ña:?|d\.)\s*",

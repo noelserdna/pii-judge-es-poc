@@ -26,9 +26,9 @@ def n_minimo_regla_del_tres(objetivo: float) -> int:
 
 def main() -> None:
     print("Cota superior CP 95 % (unilateral) de la tasa de falsos descartes")
-    print(f"{'n':>6} | " + " | ".join(f"k={k:<2d}" for k in range(0, 8)))
+    print(f"{'n':>6} | " + " | ".join(f"k={k:<2d}" for k in range(8)))
     for n in (50, 100, 150, 300, 500, 700, 1000):
-        print(f"{n:>6} | " + " | ".join(f"{100 * cota_superior(k, n):4.2f}%" for k in range(0, 8)))
+        print(f"{n:>6} | " + " | ".join(f"{100 * cota_superior(k, n):4.2f}%" for k in range(8)))
     for obj in (0.01, 0.025):
         print(f"\nn mínimo con 0 fallos para cota ≤ {100 * obj:.1f} %: {n_minimo_regla_del_tres(obj)}")
     for n in (500, 600, 700):
