@@ -13,3 +13,7 @@ fecha,paso,horas,tipo,descripcion
 2026-11-07,2,2,codigo,"Detector definitivo (src/detector) con tests y PR #10"
 2026-11-07,2,1,guia_didactica,"Capítulo 2 de la guía didáctica y figura de candidatos por tipo; ADR-016"
 2026-11-07,3,2.5,datos,"Generador sintético (src/data/synth.py, gazetteers), corpus de 313 documentos, ADR-017"
+2026-11-07,5,1.5,codigo,"Instancias, regresión logística, métricas C1–C3 y evaluador (PR #12)"
+2026-11-07,6,1.5,codigo,"Script de entrenamiento, pruebas de humo local y en Colab, orquestador de Colab"
+2026-11-07,3,1,datos,"Selección y descarga de 24 sentencias, pipeline del CENDOJ, ADR-018"
+2026-11-07,3,2,guia_didactica,"Capítulo 3 de la guía didáctica"

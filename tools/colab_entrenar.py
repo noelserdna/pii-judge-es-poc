@@ -42,7 +42,7 @@ def configuraciones(humo: bool) -> list[dict]:
 
 
 def colab(*args: str, entrada: str | None = None, timeout: float | None = None) -> str:
-    r = subprocess.run(["colab", *args], input=entrada, capture_output=True, text=True, encoding="utf-8",
+    r = subprocess.run(["colab", *args], input=entrada, capture_output=True, text=True, encoding="utf-8", check=False,
                        errors="replace", timeout=timeout)
     if r.returncode != 0:
         raise RuntimeError(f"colab {' '.join(args)} falló:\n{r.stdout[-2000:]}\n{r.stderr[-2000:]}")

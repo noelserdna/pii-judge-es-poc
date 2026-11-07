@@ -34,3 +34,6 @@ Aceptar el 100 % de las sugerencias en menos de 4 segundos es la firma del **ses
 - Estimación para el Paso 3: ~1.700 instancias a ~5–8 s, entre 2,5 y 4 horas de anotación pura, muy por debajo de las 18 h presupuestadas.
 - Las sugerencias de la IA para el Paso 3 tienen que generarse **antes** de anotar y guardarse aparte, para que no se puedan ajustar después.
 - La IA que sugiere es la misma familia de modelos que podría usarse como baseline o como juez en trabajos posteriores. Eso se declara en el informe.
+
+## Seguimiento
+- **7-11-2026:** para la anotación principal (1.642 instancias del CENDOJ) **no se generan sugerencias**. Escribir a mano 1.642 sugerencias de la IA no es viable. Usar las de un modelo entrenado en este mismo proyecto introduciría su sesgo en las etiquetas, justo el problema que este ADR quería evitar. Se anota en **modo ciego puro**. El control de consistencia lo da la re-anotación a ciegas de 100 instancias al menos 7 días después (protocolo §4).

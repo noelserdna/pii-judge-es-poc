@@ -104,10 +104,12 @@ nav:
       - ADR-015 Anotación ciega: decisiones/ADR-015-anotacion-ciega.md
       - ADR-016 Colab: decisiones/ADR-016-colab.md
       - ADR-017 Corpus sintético: decisiones/ADR-017-sinteticos.md
+      - ADR-018 CENDOJ en local: decisiones/ADR-018-cendoj-uso-local.md
   - Aprende:
       - guia/index.md
       - 0 · Un experimento honesto: guia/00-experimento-honesto.md
       - 1 · ¿Qué es un dato personal?: guia/01-dato-personal.md
       - 2 · Cómo se encuentran candidatos: guia/02-encontrar-candidatos.md
+      - 3 · Datos para enseñar y para examinar: guia/03-datos-ensenar-examinar.md
       - Glosario: guia/glosario.md
   - Informe: informe.md

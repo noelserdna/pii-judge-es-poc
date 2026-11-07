@@ -21,3 +21,4 @@ Cada decisión relevante se registra una vez, con su contexto, las alternativas 
 | [015](ADR-015-anotacion-ciega.md) | Toda la anotación se hace en modo ciego | aceptada | 2026-11-07 |
 | [016](ADR-016-colab.md) | Corridas de entrenamiento en Colab; GPU local para desarrollo y respaldo | aceptada | 2026-11-07 |
 | [017](ADR-017-sinteticos.md) | Diseño del corpus sintético: familias = tipos de documento | aceptada | 2026-11-07 |
+| [018](ADR-018-cendoj-uso-local.md) | Las sentencias del CENDOJ se preparan y anotan en local; solo su publicación espera respuesta | aceptada | 2026-11-07 |

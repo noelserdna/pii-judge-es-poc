@@ -28,3 +28,8 @@ Términos de los tres hilos de la guía. Crece con cada capítulo; cada término
 | NER | :brain: | Reconocimiento de entidades nombradas: marcar en un texto los nombres de personas, lugares y organizaciones. | [2](02-encontrar-candidatos.md) |
 | spaCy | :hammer_and_wrench: | Biblioteca de procesamiento del lenguaje en Python; aquí, su modelo `es_core_news_lg` para NER. | [2](02-encontrar-candidatos.md) |
 | Presidio | :hammer_and_wrench: | Herramienta libre de Microsoft para detectar y anonimizar datos personales; aquí, el detector no visto. | [2](02-encontrar-candidatos.md) |
+| Fuga de datos (*leakage*) | :brain: | Información del test que se cuela en el entrenamiento y hace que el modelo parezca mejor de lo que es. | [3](03-datos-ensenar-examinar.md) |
+| Partición agrupada | :brain: | Reparto en entrenamiento, calibración y test por documento o por familia, nunca por candidato suelto. | [3](03-datos-ensenar-examinar.md) |
+| Datos sintéticos | :brain: | Datos fabricados con plantillas, con etiqueta exacta y sin datos reales. | [3](03-datos-ensenar-examinar.md) |
+| Par contrastivo | :brain: | El mismo tipo de dato en dos contextos con etiqueta opuesta. | [3](03-datos-ensenar-examinar.md) |
+| Gazetteer | :brain: | Lista de valores (nombres, municipios, calles) para rellenar plantillas. | [3](03-datos-ensenar-examinar.md) |
