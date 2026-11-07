@@ -12,13 +12,13 @@ Cada capítulo marca sus conceptos con uno de estos iconos, para que puedas segu
 | :lock: | **Proteger datos** | qué es un dato personal, identificabilidad, seudonimización frente a anonimización, por qué un texto «disociado» sigue mereciendo cuidado, qué cuesta un falso descarte |
 | :hammer_and_wrench: | **Herramientas** | uv, git, `gh`, firma SSH, GitHub Actions, MkDocs, Zenodo, spaCy, Presidio, transformers, Colab, ONNX |
 
-## Capítulos — 2 / 9
+## Capítulos — 3 / 9
 
 | Cap. | Título | Estado |
 |---|---|---|
 | 0 | [Cómo se organiza un experimento honesto](00-experimento-honesto.md) | 🟢 publicado |
 | 1 | [¿Qué es un dato personal?](01-dato-personal.md) | 🟢 publicado |
-| 2 | Cómo se encuentran candidatos | ⚪ |
+| 2 | [Cómo se encuentran candidatos](02-encontrar-candidatos.md) | 🟢 publicado |
 | 3 | Datos para enseñar y datos para examinar | ⚪ |
 | 4 | Congelar antes de mirar | ⚪ |
 | 5 | Lo mínimo contra lo que compararse | ⚪ |

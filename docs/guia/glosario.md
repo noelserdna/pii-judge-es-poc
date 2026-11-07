@@ -6,7 +6,7 @@ Términos de los tres hilos de la guía. Crece con cada capítulo; cada término
 |---|---|---|---|
 | Dato personal | :lock: | Cualquier información sobre una persona física identificada o identificable (art. 4.1 RGPD). | [1](01-dato-personal.md) |
 | Disociación | :lock: | Sustituir los datos identificativos de un documento por otros ficticios o por marcadores; lo que hace el CENDOJ antes de publicar. No equivale a anonimización. | [1](01-dato-personal.md) |
-| Falso positivo | :brain: | Un candidato que el detector marcó como dato personal y no lo es. | 2 |
+| Falso positivo | :brain: | Un candidato que el detector marcó como dato personal y no lo es. | [2](02-encontrar-candidatos.md) |
 | Falso descarte (falso negativo) | :brain: | Un dato personal verdadero que el validador descarta por error. La métrica crítica de este proyecto. | 7 |
 | Preregistro | :brain: | Fijar por escrito, con fecha verificable, la pregunta y los criterios de éxito **antes** de ver los resultados. | [0](00-experimento-honesto.md) |
 | Regla del tres | :brain: | Si en *n* intentos no observas ningún fallo, la tasa real de fallos está por debajo de 3/*n* con un 95 % de confianza. | [0](00-experimento-honesto.md) |
@@ -21,3 +21,10 @@ Términos de los tres hilos de la guía. Crece con cada capítulo; cada término
 | Regla contrafactual | :lock: | En textos disociados, preguntar si el span identificaría a alguien **si el documento no estuviera disociado**. | [1](01-dato-personal.md) |
 | κ de Cohen | :brain: | Acuerdo entre dos anotaciones descontando el acuerdo esperable por azar. | [1](01-dato-personal.md) |
 | Sesgo de automatización | :brain: | Tendencia a confirmar lo que propone una máquina en lugar de juzgar por cuenta propia. | [1](01-dato-personal.md) |
+| Sensibilidad (recall) | :brain: | De todos los positivos que hay, qué fracción encuentra el sistema. | [2](02-encontrar-candidatos.md) |
+| Precisión | :brain: | De todo lo que el sistema marca, qué fracción es positivo de verdad. | [2](02-encontrar-candidatos.md) |
+| Expresión regular | :hammer_and_wrench: | Patrón que describe la forma de un texto (p. ej. 8 dígitos y una letra). | [2](02-encontrar-candidatos.md) |
+| Dígito de control | :hammer_and_wrench: | Carácter calculado a partir del resto del identificador para detectar errores (letra del DNI, módulo 97 del IBAN). | [2](02-encontrar-candidatos.md) |
+| NER | :brain: | Reconocimiento de entidades nombradas: marcar en un texto los nombres de personas, lugares y organizaciones. | [2](02-encontrar-candidatos.md) |
+| spaCy | :hammer_and_wrench: | Biblioteca de procesamiento del lenguaje en Python; aquí, su modelo `es_core_news_lg` para NER. | [2](02-encontrar-candidatos.md) |
+| Presidio | :hammer_and_wrench: | Herramienta libre de Microsoft para detectar y anonimizar datos personales; aquí, el detector no visto. | [2](02-encontrar-candidatos.md) |

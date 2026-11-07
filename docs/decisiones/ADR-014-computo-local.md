@@ -1,6 +1,6 @@
 # ADR-014 · Entrenamiento en la GPU local como opción principal; Colab como respaldo
 
-**Estado:** aceptada · **Sustituye a:** [ADR-005](ADR-005-computo.md) · **Fecha:** 2026-11-07 · **¿Se reutilizaría en trabajos posteriores?** Sí: la prueba de humo como paso previo a cualquier entrenamiento.
+**Estado:** sustituida por [ADR-016](ADR-016-colab.md) · **Sustituye a:** [ADR-005](ADR-005-computo.md) · **Fecha:** 2026-11-07 · **¿Se reutilizaría en trabajos posteriores?** Sí: la prueba de humo como paso previo a cualquier entrenamiento.
 
 ## Contexto
 El [ADR-005](ADR-005-computo.md) eligió Google Colab porque se suponía que la GTX 1060 de 3 GB no daba para el plan. Antes de preparar ningún notebook se ha medido (`tools/gpu_humo.py`: frases inventadas, max_len 192, 20 pasos tras 3 de calentamiento):

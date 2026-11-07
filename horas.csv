@@ -10,3 +10,5 @@ fecha,paso,horas,tipo,descripcion
 2026-11-07,6,1,computo,"Prueba de humo de GPU (DistilBETO y RoBERTalex), ADR-014"
 2026-11-07,1,0.5,anotacion,"Prueba ciega de 30 instancias (anotación) y guía v1"
 2026-11-07,1,2,guia_didactica,"Capítulo 1 de la guía didáctica; ADR-015"
+2026-11-07,2,2,codigo,"Detector definitivo (src/detector) con tests y PR #10"
+2026-11-07,2,1,guia_didactica,"Capítulo 2 de la guía didáctica y figura de candidatos por tipo; ADR-016"

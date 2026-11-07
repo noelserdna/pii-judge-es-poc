@@ -17,5 +17,6 @@ Cada decisión relevante se registra una vez, con su contexto, las alternativas 
 | [011](ADR-011-documentacion.md) | Documentación mínima con trazabilidad: MkDocs, bitácora por sesión, flujo git | aceptada | 2026-11-06 |
 | [012](ADR-012-unidad-de-anotacion.md) | Unidad de anotación: una mención por grupo y muestreo por documento | aceptada | 2026-11-07 |
 | [013](ADR-013-autorizacion-cendoj.md) | El uso del CENDOJ más allá del chequeo queda condicionado a su autorización | aceptada | 2026-11-07 |
-| [014](ADR-014-computo-local.md) | Entrenamiento en la GPU local como opción principal; Colab como respaldo | aceptada | 2026-11-07 |
+| [014](ADR-014-computo-local.md) | Entrenamiento en la GPU local como opción principal; Colab como respaldo | sustituida por 016 | 2026-11-07 |
 | [015](ADR-015-anotacion-ciega.md) | Toda la anotación se hace en modo ciego | aceptada | 2026-11-07 |
+| [016](ADR-016-colab.md) | Corridas de entrenamiento en Colab; GPU local para desarrollo y respaldo | aceptada | 2026-11-07 |
