@@ -1,7 +1,11 @@
 """Anotador local: una web en 127.0.0.1 para revisar y anotar instancias.
 
-El texto de las sentencias nunca sale del ordenador: el servidor solo escucha en
+El texto de las sentencias nunca sale del ordenador: por defecto el servidor solo escucha en
 127.0.0.1 y las anotaciones se guardan en un JSON local (y una copia CSV).
+
+Con --red escucha en la red local (wifi de casa) para anotar desde el móvil. El texto sigue
+sin pasar por ningún servicio externo; para que nadie más de la red pueda abrirlo, cada
+petición exige un token aleatorio que va en la URL que imprime el servidor.
 
 Modos:
   revision  la sugerencia viene rellenada; se acepta (Enter) o se cambia.
@@ -20,11 +24,14 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import secrets
+import socket
 import threading
 import time
 import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+from urllib.parse import parse_qs, urlparse
 
 HTML = Path(__file__).with_name("index.html")
 CAMPOS = ["etiqueta", "categoria", "rol", "nota"]
@@ -63,10 +70,30 @@ class Estado:
                                     a["acepto_sugerencia"], a["ms"], a["modo"], a["ts"]])
 
 
-def crear_handler(estado: Estado):
+def ip_local() -> str:
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        s.connect(("10.255.255.255", 1))  # no envía nada: solo elige la interfaz de salida
+        return s.getsockname()[0]
+    except OSError:
+        return "127.0.0.1"
+    finally:
+        s.close()
+
+
+def crear_handler(estado: Estado, token: str | None = None):
     class Handler(BaseHTTPRequestHandler):
         def log_message(self, *args):  # silencio en consola
             pass
+
+        def _autorizado(self) -> bool:
+            if not token:
+                return True
+            q = parse_qs(urlparse(self.path).query)
+            if secrets.compare_digest(q.get("t", [""])[0], token) or                secrets.compare_digest(self.headers.get("X-Token", ""), token):
+                return True
+            self._json({"error": "falta el token"}, 403)
+            return False
 
         def _json(self, obj, code=200):
             data = json.dumps(obj, ensure_ascii=False).encode("utf-8")
@@ -77,21 +104,26 @@ def crear_handler(estado: Estado):
             self.wfile.write(data)
 
         def do_GET(self):
-            if self.path in ("/", "/index.html"):
+            if not self._autorizado():
+                return
+            ruta = urlparse(self.path).path
+            if ruta in ("/", "/index.html"):
                 data = HTML.read_bytes()
                 self.send_response(200)
                 self.send_header("Content-Type", "text/html; charset=utf-8")
                 self.send_header("Content-Length", str(len(data)))
                 self.end_headers()
                 self.wfile.write(data)
-            elif self.path == "/api/datos":
+            elif ruta == "/api/datos":
                 self._json({"modo": estado.modo, "items": estado.items, "sugerencias": estado.sug,
                             "anotaciones": estado.anot})
             else:
                 self._json({"error": "no encontrado"}, 404)
 
         def do_POST(self):
-            if self.path != "/api/guardar":
+            if not self._autorizado():
+                return
+            if urlparse(self.path).path != "/api/guardar":
                 return self._json({"error": "no encontrado"}, 404)
             datos = json.loads(self.rfile.read(int(self.headers["Content-Length"])) or b"{}")
             if datos.get("id") not in {i["id"] for i in estado.items}:
@@ -109,11 +141,15 @@ def main() -> None:
     ap.add_argument("--salida", type=Path, required=True)
     ap.add_argument("--modo", choices=["revision", "ciego"], default="revision")
     ap.add_argument("--puerto", type=int, default=8765)
+    ap.add_argument("--red", action="store_true", help="escuchar en la red local (móvil) con token")
     a = ap.parse_args()
     estado = Estado(a.entrada, a.sugerencias, a.salida, a.modo)
-    srv = ThreadingHTTPServer(("127.0.0.1", a.puerto), crear_handler(estado))
-    url = f"http://127.0.0.1:{a.puerto}/"
+    token = secrets.token_urlsafe(9) if a.red else None
+    srv = ThreadingHTTPServer(("0.0.0.0" if a.red else "127.0.0.1", a.puerto), crear_handler(estado, token))
+    url = f"http://127.0.0.1:{a.puerto}/" + (f"?t={token}" if token else "")
     print(f"Anotador en {url}  ·  modo {a.modo}  ·  {len(estado.items)} instancias  ·  guardando en {a.salida}")
+    if token:
+        print(f"Desde el móvil (misma wifi): http://{ip_local()}:{a.puerto}/?t={token}")
     print("Ctrl+C para parar.")
     webbrowser.open(url)
     try:

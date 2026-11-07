@@ -51,7 +51,19 @@ select,input{width:100%;padding:9px 10px;border-radius:9px;border:1px solid var(
 .list a.done-AMBIGUO{background:color-mix(in srgb,var(--amb) 25%,transparent);color:var(--tx)}
 .list a.cur{outline:2px solid var(--ac)}
 .hidden{display:none}
-@media (max-width:640px){.form{grid-template-columns:1fr}.span{font-size:19px}}
+.roles{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.roles span{width:100%;font-size:12px;color:var(--mut);text-transform:uppercase;letter-spacing:.04em}
+.roles button{flex:1;min-width:70px;padding:12px 6px;border-radius:10px;border:2px solid var(--bd);background:var(--card);color:var(--tx);font-size:15px;cursor:pointer}
+.roles button.on{border-color:var(--ac);color:var(--ac);font-weight:700}
+.roles.hidden{display:none}
+@media (max-width:640px){
+  main{margin:10px auto;padding:0 10px}.card{padding:14px 14px 90px}
+  .form{grid-template-columns:1fr 1fr}.form>div:nth-child(3){display:none}
+  .span{font-size:18px;margin-bottom:10px}.ctx{font-size:16px;line-height:1.6;padding:10px 12px}
+  .et-btns button{min-width:calc(50% - 4px);padding:16px 8px;font-size:16px}
+  .nav{position:fixed;left:0;right:0;bottom:0;margin:0;padding:10px;background:var(--card);border-top:1px solid var(--bd);z-index:3}
+  .nav button{padding:14px 12px}.nav .saved{position:absolute;top:-22px;right:12px}
+  kbd,.help,.list{display:none}.top h1{display:none}}
 </style>
 </head>
 <body>
@@ -73,6 +85,11 @@ select,input{width:100%;padding:9px 10px;border-radius:9px;border:1px solid var(
       <button data-v="EXCLUIDO_PLACEHOLDER">MARCADOR <kbd>M</kbd></button>
     </div>
 
+    <div class="roles hidden" id="roles"><span>Rol</span>
+      <button data-r="parte">parte</button><button data-r="profesional">profesional</button>
+      <button data-r="judicial">judicial</button><button data-r="otro">otro</button>
+    </div>
+
     <div class="form">
       <div><label>Categoría</label><select id="categoria">
         <option value="">—</option><option>PERSONA</option><option>IDENTIFICADOR</option>
@@ -87,9 +104,9 @@ select,input{width:100%;padding:9px 10px;border-radius:9px;border:1px solid var(
     </div>
 
     <div class="nav">
-      <button id="prev">← Anterior</button>
+      <button id="prev">←</button>
       <button class="primary" id="ok">Guardar y siguiente <kbd>Enter</kbd></button>
-      <button id="next">Siguiente →</button>
+      <button id="next">→</button>
       <span class="saved" id="saved"></span>
     </div>
     <div class="help">Atajos: <b>S</b> sí · <b>N</b> no · <b>A</b> ambiguo · <b>M</b> marcador · <b>1–4</b> rol (parte, profesional, judicial, otro) ·
@@ -101,9 +118,11 @@ select,input{width:100%;padding:9px 10px;border-radius:9px;border:1px solid var(
 const $=id=>document.getElementById(id);
 let D, i=0, t0=0, eligioPropia=false;
 const ROLES=["parte","profesional","judicial","otro"];
+const TOKEN=new URLSearchParams(location.search).get('t')||'';
+const H={'X-Token':TOKEN};
 
 async function cargar(){
-  D=await (await fetch('/api/datos')).json();
+  D=await (await fetch('/api/datos',{headers:H})).json();
   $('modo').textContent = D.modo==='ciego' ? 'modo ciego' : 'modo revisión';
   const pend=D.items.findIndex(x=>!D.anotaciones[x.id]); i = pend<0?0:pend; pintar();
 }
@@ -131,7 +150,9 @@ function mostrarSug(){
   const txt=`Sugerencia: <b>${s.etiqueta}</b>${s.categoria?' · '+s.categoria:''}${s.rol?' · '+s.rol:''}${s.nota?' — <i>'+esc(s.nota)+'</i>':''}`;
   $('sug').innerHTML = (D.modo==='ciego' && !eligioPropia) ? 'La sugerencia se mostrará cuando elijas tu etiqueta.' : txt;
 }
-function marcarBotones(){document.querySelectorAll('#etbtns button').forEach(b=>b.classList.toggle('on',b.dataset.v===$('etiqueta').value))}
+function marcarBotones(){document.querySelectorAll('#etbtns button').forEach(b=>b.classList.toggle('on',b.dataset.v===$('etiqueta').value));
+  $('roles').classList.toggle('hidden', !($('etiqueta').value==='SI' && $('categoria').value==='PERSONA'));
+  document.querySelectorAll('#roles button').forEach(b=>b.classList.toggle('on',b.dataset.r===$('rol').value))}
 let primera=null;
 function elegir(v){ if(!eligioPropia && primera===null) primera=v;
   $('etiqueta').value=v; if(v!=='SI'){$('categoria').value='';$('rol').value=''}
@@ -145,7 +166,7 @@ async function guardar(){
   if(d.etiqueta==='SI' && !d.categoria){$('saved').textContent='Falta la categoría';return false}
   if(d.etiqueta==='SI' && d.categoria==='PERSONA' && !d.rol){$('saved').textContent='Falta el rol (teclas 1–4)';$('rol').focus();return false}
   d.acepto_sugerencia = s.etiqueta===d.etiqueta && (s.categoria||'')===d.categoria && (s.rol||'')===d.rol;
-  const r=await (await fetch('/api/guardar',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})).json();
+  const r=await (await fetch('/api/guardar',{method:'POST',headers:{...H,'Content-Type':'application/json'},body:JSON.stringify(d)})).json();
   if(r.ok){D.anotaciones[it.id]=d; return true} return false;
 }
 async function okSiguiente(){ if(await guardar()){ if(i<D.items.length-1){i++;pintar()} else {pintar(); $('saved').textContent='¡Terminado! Puedes cerrar esta pestaña.'} } }
@@ -154,12 +175,14 @@ $('prev').onclick=()=>{if(i>0){i--;pintar()}};
 $('next').onclick=()=>{if(i<D.items.length-1){i++;pintar()}};
 $('etiqueta').onchange=()=>elegir($('etiqueta').value);
 document.querySelectorAll('#etbtns button').forEach(b=>b.onclick=()=>elegir(b.dataset.v));
+document.querySelectorAll('#roles button').forEach(b=>b.onclick=()=>{$('rol').value=b.dataset.r;marcarBotones()});
+$('categoria').onchange=marcarBotones; $('rol').onchange=marcarBotones;
 $('list').onclick=e=>{const j=e.target.dataset.j; if(j!==undefined){e.preventDefault(); i=+j; pintar()}};
 document.addEventListener('keydown',e=>{
   if(e.target.id==='nota'){ if(e.key==='Enter'){e.preventDefault();okSiguiente()} return }
   const k=e.key.toLowerCase();
   if(k==='s')elegir('SI'); else if(k==='n')elegir('NO'); else if(k==='a')elegir('AMBIGUO'); else if(k==='m')elegir('EXCLUIDO_PLACEHOLDER');
-  else if(['1','2','3','4'].includes(k)){$('rol').value=ROLES[+k-1]}
+  else if(['1','2','3','4'].includes(k)){$('rol').value=ROLES[+k-1];marcarBotones()}
   else if(e.key==='Enter'){e.preventDefault();okSiguiente()}
   else if(e.key==='ArrowLeft'){$('prev').click()} else if(e.key==='ArrowRight'){$('next').click()}
 });
