@@ -100,6 +100,7 @@ nav:
       - ADR-011 Documentación: decisiones/ADR-011-documentacion.md
       - ADR-012 Unidad de anotación: decisiones/ADR-012-unidad-de-anotacion.md
       - ADR-013 Autorización CENDOJ: decisiones/ADR-013-autorizacion-cendoj.md
+      - ADR-014 Cómputo local: decisiones/ADR-014-computo-local.md
   - Aprende:
       - guia/index.md
       - 0 · Un experimento honesto: guia/00-experimento-honesto.md

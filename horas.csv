@@ -6,3 +6,5 @@ fecha,paso,horas,tipo,descripcion
 2026-11-07,0,0.5,legal,"Lectura del Reglamento 3/2010 y consulta de reutilización enviada al CENDOJ"
 2026-11-07,0,3,documentacion,"Protocolo v1, tag preregistro, Release y DOI; capítulo 0 de la guía didáctica y figura de la regla del tres"
 2026-11-07,1,1.5,anotacion,"Muestreo por grupos (src/annotate/muestreo.py + tests), muestra de prueba de 60 instancias, prueba en seco de la guía con IA y guía v0.1"
+2026-11-07,1,1.5,anotacion,"Anotador web local (tools/anotador) y análisis de la prueba en seco"
+2026-11-07,6,1,computo,"Prueba de humo de GPU (DistilBETO y RoBERTalex), ADR-014"

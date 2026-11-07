@@ -1,6 +1,6 @@
 # ADR-005 · Entrenamiento en Google Colab; plan B en GPU local
 
-**Estado:** aceptada · **Fecha:** 2026-11-06 · **¿Se reutilizaría en trabajos posteriores?** Sí, como criterio: datos públicos pueden salir a un tercero; datos no públicos, nunca.
+**Estado:** sustituida por [ADR-014](ADR-014-computo-local.md) · **Fecha:** 2026-11-06 · **¿Se reutilizaría en trabajos posteriores?** Sí, como criterio: datos públicos pueden salir a un tercero; datos no públicos, nunca.
 
 ## Contexto
 El equipo local tiene una GTX 1060 de 3 GB. Basta para afinar DistilBETO con lotes pequeños, pero no para el modelo de referencia (roberta-base-bne, 125M) sin trucos. Google Colab ofrece una T4 (16 GB) gratis o casi.

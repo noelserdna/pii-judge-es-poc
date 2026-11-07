@@ -11,7 +11,7 @@ Las herramientas que ocultan datos personales en documentos jurídicos se pasan 
 
 ## Panel de progreso
 
-_Última actualización: 7 de noviembre de 2026 (preregistro publicado; Paso 0 cerrado)._
+_Última actualización: 7 de noviembre de 2026 (prueba en seco de la guía; GPU local verificada)._
 
 !!! warning "Pendiente de un tercero"
     El uso de sentencias del CENDOJ para construir el conjunto anotado (Paso 3a) espera la respuesta del CENDOJ a la consulta enviada el **7-11-2026**. Previsiblemente no hará falta autorización (art. 4.1 del Reglamento 3/2010: investigación sin finalidad comercial), pero hasta que lo confirmen rige el [ADR-013](decisiones/ADR-013-autorizacion-cendoj.md), con fecha límite del 24-11. Los demás pasos siguen adelante.
@@ -31,7 +31,7 @@ Leyenda: ⚪ sin datos · 🟢 pasa · 🟡 no concluyente · 🔴 no pasa. Los 
 | # | Paso | Previsto | Real | Estado |
 |---|---|---|---|---|
 | 0 | Proyecto, repo, chequeo de realidad y preregistro | 7–10 nov | 6–7 nov | 🟢 hecho |
-| 1 | Guía de anotación v1 | 11–12 nov | — | 🔵 siguiente |
+| 1 | Guía de anotación v1 | 11–12 nov | — | 🔵 en curso (v0.1; prueba en seco hecha) |
 | 2 | Detector de alta sensibilidad + Presidio | 12–14 nov | — | ⚪ pendiente |
 | 3 | Datos: CENDOJ, sintéticos, candidatos, anotación | 15–24 nov | — | ⚪ pendiente |
 | 4 | Congelado de etiquetas | 25 nov | — | ⚪ pendiente |
@@ -69,7 +69,7 @@ Ver [Aprende](guia/index.md).
 
 | Horas acumuladas | Coste acumulado |
 |---|---|
-| 13,5 h | 0 € |
+| 17,5 h | 0 € |
 
 Fuente: [`horas.csv`](https://github.com/noelserdna/pii-judge-es-poc/blob/main/horas.csv) y [`costes.csv`](https://github.com/noelserdna/pii-judge-es-poc/blob/main/costes.csv).
 
