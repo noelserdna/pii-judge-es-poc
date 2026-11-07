@@ -23,12 +23,12 @@ Hay ya un corpus sintético completo: 12 tipos de documento judicial inventados,
 
 | Partición | Familias | Documentos | Candidatos | Positivos | Mínimo del protocolo |
 |---|---|---|---|---|---|
-| Entrenamiento | 7 | 173 | 2.559 | 1.003 | — |
-| Calibración | 2 | 60 | 775 | **322** | ≥ 300 ✔ |
-| Test | 3 | 80 | 1.229 | **483** | ≥ 450 ✔ |
+| Entrenamiento | 7 | 173 | 2.548 | 1.001 | — |
+| Calibración | 2 | 60 | 784 | **324** | ≥ 300 ✔ |
+| Test | 3 | 80 | 1.222 | **481** | ≥ 450 ✔ |
 
-- El detector ve el **96,8 %** de los datos personales insertados (1.762 de 1.821). Los que se le escapan son sobre todo oficios («la única veterinaria de…»), que no busca.
-- El 13 % de los candidatos cae en el texto fijo de las plantillas: «Dña», «Magistrada», «Juzgado». Son falsos positivos muy parecidos a los del CENDOJ.
+- El detector ve el **96,4 %** de los datos personales insertados. Los que se le escapan son sobre todo oficios («la única veterinaria de…»), que no busca.
+- El 13 % de los candidatos (607) cae en el texto fijo de las plantillas: «Dña», «Magistrada», «Juzgado». Son falsos positivos muy parecidos a los del CENDOJ.
 
 ## Qué se aprendió
 
@@ -36,7 +36,8 @@ Hay ya un corpus sintético completo: 12 tipos de documento judicial inventados,
 2. **Qué es una «familia» decide qué mide el test.** Si cada familia fuera un tipo de dato (una de DNI, otra de teléfonos…), el test tendría tipos de dato que el modelo nunca vio y el criterio C2 fallaría por diseño. Con familias = tipos de documento, el test mide algo razonable: si el modelo generaliza a estructuras de documento nuevas.
 3. **Las listas «disjuntas» no lo eran.** «Zamora» y «Toledo» eran a la vez apellido y municipio, y «Castaño», apellido y vía. Un test automático lo detectó antes de generar nada.
 4. **El texto fijo de una plantilla no contiene datos personales por construcción.** No hace falta excluir los candidatos que caen ahí: son `NO` con certeza, y son justo los falsos positivos más útiles para entrenar. Esto cambia lo que decía el protocolo (desviación D4).
-5. **Proporción de positivos:** ~40 % en el sintético frente al 15–20 % del CENDOJ. Es una diferencia de dominio que el modelo podría aprovechar como atajo. La sonda y el análisis por fuente lo vigilarán.
+5. **Una comprobación silenciada no es una comprobación.** Para verificar que el corpus era reproducible se regeneró con la salida redirigida a `/dev/null` y se comparó el hash: «idéntico». Pero esa regeneración no llegó a escribir nada, y la comparación se hizo contra el mismo fichero. Al regenerarlo de verdad (tras forzar finales de línea LF para que el hash no dependa del sistema operativo), las cifras cambiaron ligeramente (4.563 → 4.554 candidatos), porque las primeras eran anteriores a la corrección de género. Se comprobó después que el detector es determinista: tres ejecuciones dan el mismo hash. Las cifras de esta entrada ya están corregidas.
+6. **Proporción de positivos:** ~40 % en el sintético frente al 15–20 % del CENDOJ. Es una diferencia de dominio que el modelo podría aprovechar como atajo. La sonda y el análisis por fuente lo vigilarán.
 
 ## Desviaciones del protocolo
 

@@ -336,12 +336,10 @@ def main() -> None:
             cands.extend(cs)
             positivos += sum(c["etiqueta"] == "SI" for c in cs)
             i += 1
-    with (a.salida / "documentos.jsonl").open("w", encoding="utf-8", newline="
-") as fh:
+    with (a.salida / "documentos.jsonl").open("w", encoding="utf-8", newline="\n") as fh:
         for d in docs:
             fh.write(json.dumps(d, ensure_ascii=False) + "\n")
-    with (a.salida / "candidatos.jsonl").open("w", encoding="utf-8", newline="
-") as fh:
+    with (a.salida / "candidatos.jsonl").open("w", encoding="utf-8", newline="\n") as fh:
         for c in cands:
             fh.write(json.dumps(c, ensure_ascii=False) + "\n")
     # recall del detector sobre los huecos SI (cuántos datos personales «ve»)
@@ -361,8 +359,9 @@ def main() -> None:
         "recall_detector_sobre_huecos_si": round(detectados / len(huecos_si), 4),
         "candidatos_unicos": len(vistos),
     }
-    (a.salida / "resumen.json").write_text(json.dumps(resumen, ensure_ascii=False, indent=2), encoding="utf-8", newline="
-")
+    (a.salida / "resumen.json").write_text(
+        json.dumps(resumen, ensure_ascii=False, indent=2), encoding="utf-8", newline="\n"
+    )
     print(json.dumps(resumen, ensure_ascii=False, indent=2))
 
 

@@ -26,6 +26,6 @@ El protocolo (§3.1) pide 10–12 familias de plantillas con pares contrastivos,
 - **Excluir los candidatos del texto fijo.** Se perderían justo los falsos positivos más parecidos a los reales («Dña», «Magistrada», «Juzgado»).
 
 ## Consecuencias
-- Resultado: 313 documentos y 4.563 candidatos; positivos: entrenamiento 1.003, calibración 322 y test 483. El detector ve el 96,8 % de los datos personales insertados; los que no ve son sobre todo oficios («veterinaria»), que el detector no busca.
+- Resultado: 313 documentos y 4.554 candidatos; positivos: entrenamiento 1.001, calibración 324 y test 481. El detector ve el 96,4 % de los datos personales insertados; los que no ve son sobre todo oficios («veterinaria»), que el detector no busca.
 - Los positivos son el ~40 % de los candidatos, frente al 15–20 % del CENDOJ. La sonda de dominio (§9 del protocolo) lo tendrá en cuenta.
 - El corpus se publica completo (`data/synth/`, CC BY 4.0).

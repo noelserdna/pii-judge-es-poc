@@ -46,10 +46,10 @@ Leyenda: ⚪ sin datos · 🟢 pasa · 🟡 no concluyente · 🔴 no pasa. Los 
 |---|---|---|
 | Sentencias del chequeo de realidad (solo local) | 10 | 10 |
 | Sentencias CENDOJ para el conjunto anotado | 0 | ~25 |
-| Familias sintéticas | 12 (313 documentos, 4.563 candidatos) | 10–12 |
+| Familias sintéticas | 12 (313 documentos, 4.554 candidatos) | 10–12 |
 | Grupos anotados (1 mención por grupo, [ADR-012](decisiones/ADR-012-unidad-de-anotacion.md)) | 0 | ~1.700 |
 | Ambiguos excluidos | — | < 5 % |
-| Positivos en el conjunto de test | 483 sintéticos + CENDOJ pendiente | ≥ 500 |
+| Positivos en el conjunto de test | 481 sintéticos + CENDOJ pendiente | ≥ 500 |
 | Acuerdo humano–IA en la prueba ciega (κ, solo orientativo) | 0,91 | — |
 | Acuerdo entre anotaciones del protocolo (κ) | — | ≥ 0,6 |
 
