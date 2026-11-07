@@ -8,3 +8,4 @@ fecha,paso,horas,tipo,descripcion
 2026-11-07,1,1.5,anotacion,"Muestreo por grupos (src/annotate/muestreo.py + tests), muestra de prueba de 60 instancias, prueba en seco de la guía con IA y guía v0.1"
 2026-11-07,1,1.5,anotacion,"Anotador web local (tools/anotador) y análisis de la prueba en seco"
 2026-11-07,6,1,computo,"Prueba de humo de GPU (DistilBETO y RoBERTalex), ADR-014"
+2026-11-07,1,0.5,anotacion,"Prueba ciega de 30 instancias (anotación) y guía v1"

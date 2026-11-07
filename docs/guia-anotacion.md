@@ -1,7 +1,7 @@
 # Guía de anotación
 
-!!! warning "Versión 0.1 · borrador"
-    Esta es la versión de trabajo. La versión 1 se cierra con el tag `guia-v1` **antes** de anotar ninguna instancia de los conjuntos de calibración o test. Todos los ejemplos de esta guía son **inventados**; ninguno procede de una resolución real.
+!!! success "Versión 1 · cerrada el 7-11-2026 (tag `guia-v1`)"
+    Cerrada antes de anotar ninguna instancia de los conjuntos de calibración o test. Cualquier cambio posterior es una desviación del protocolo y se registra en la bitácora. Todos los ejemplos de esta guía son **inventados**; ninguno procede de una resolución real.
 
 ## 1. Qué se anota
 
@@ -23,7 +23,7 @@ Es la **regla contrafactual** ([ADR-010](decisiones/ADR-010-etiqueta-cendoj.md))
 Además de la etiqueta:
 
 - **`categoria`**, solo si la etiqueta es `SI`: `PERSONA`, `IDENTIFICADOR`, `DIRECCION`, `CONTACTO`, `OTRO`.
-- **`rol`**, solo si la etiqueta es `SI` y la categoría es `PERSONA`:
+- **`rol`**, **obligatorio** si la etiqueta es `SI` y la categoría es `PERSONA` (el anotador no deja guardar sin él):
     - `parte`: partes procesales y personas implicadas en los hechos (demandante, acusado, víctima, testigo, familiares);
     - `profesional`: quien interviene por su oficio en el proceso (procurador, letrado, perito, notario, graduado social);
     - `judicial`: magistrado, juez, LAJ o fiscal;
@@ -40,7 +40,8 @@ Además de la etiqueta:
 6. **Empresas y organismos → `NO`**, aunque lleven un apellido. Excepción: si el contexto deja claro que se trata de un empresario individual identificado por ese nombre, `SI`.
 7. **Lugares.**
     - Una ciudad o provincia mencionada de forma genérica («el Juzgado de Valladolid», «viajaron a Vitoria») → `NO`.
-    - Un **domicilio** o una dirección concreta de una persona (calle y número, «la vivienda de la calle…») → `SI`, categoría `DIRECCION`.
+    - Un **domicilio** o una dirección concreta **que el contexto atribuye a una persona física** (calle y número, «la vivienda de la calle…») → `SI`, categoría `DIRECCION`.
+    - Una dirección de un **inmueble de una empresa** (nave, local, oficina) o de un ocupante que el contexto no permite saber si es persona física → `NO`. `AMBIGUO` no sirve como salida para «no consta».
     - Una localidad pequeña ligada a una persona concreta: si con el contexto puede contribuir a identificarla → `SI`, categoría `OTRO`; si no, `NO`. En caso de duda real, `AMBIGUO`.
 8. **Números.** Números de procedimiento, recurso, sentencia o ley, fechas e importes → `NO`. DNI, NIE, pasaporte, NUSS, IBAN personal o matrícula de una persona → `SI`, categoría `IDENTIFICADOR`.
 9. **Nombres de personas en citas de jurisprudencia o doctrina** («como dijo el ponente X en la STS…») → `SI`, `rol = judicial` u `otro`.
@@ -72,7 +73,12 @@ Además de la etiqueta:
 4. Registrar en `horas.csv` las horas y el número de instancias anotadas por sesión.
 5. Las dudas que se repitan se anotan en la bitácora. Si obligan a cambiar una regla **antes** de `guia-v1`, se cambia aquí. **Después** de `guia-v1`, el cambio es una desviación del protocolo.
 
-## 6. Cambios respecto a la versión 0
+## 6. Cambios respecto a la versión 0.1 (prueba ciega del 7-11-2026, 30 instancias)
+
+- Regla 7 aclarada: una dirección solo es `SI` si el contexto la atribuye a una persona física; los inmuebles de empresas y los ocupantes sin identificar son `NO`. Era la única discrepancia de la prueba.
+- El `rol` pasa a ser obligatorio para las personas: en la prueba se quedó vacío en los 7 positivos.
+
+## 7. Cambios respecto a la versión 0
 
 Prueba en seco del 7-11-2026 con 60 instancias de las sentencias del chequeo, que no entran en calibración ni en test:
 

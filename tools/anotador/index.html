@@ -142,6 +142,8 @@ async function guardar(){
   const d={id:it.id, etiqueta:$('etiqueta').value, categoria:$('categoria').value, rol:$('rol').value, nota:$('nota').value,
     ms:Math.round(performance.now()-t0), etiqueta_inicial: primera ?? $('etiqueta').value};
   if(!d.etiqueta){$('saved').textContent='Elige una etiqueta';return false}
+  if(d.etiqueta==='SI' && !d.categoria){$('saved').textContent='Falta la categoría';return false}
+  if(d.etiqueta==='SI' && d.categoria==='PERSONA' && !d.rol){$('saved').textContent='Falta el rol (teclas 1–4)';$('rol').focus();return false}
   d.acepto_sugerencia = s.etiqueta===d.etiqueta && (s.categoria||'')===d.categoria && (s.rol||'')===d.rol;
   const r=await (await fetch('/api/guardar',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})).json();
   if(r.ok){D.anotaciones[it.id]=d; return true} return false;
