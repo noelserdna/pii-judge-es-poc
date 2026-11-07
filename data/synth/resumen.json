@@ -1,0 +1,33 @@
+{
+  "semilla": 20261107,
+  "documentos": {
+    "train": 173,
+    "cal": 60,
+    "test": 80
+  },
+  "candidatos": {
+    "train": 2548,
+    "cal": 784,
+    "test": 1222
+  },
+  "positivos": {
+    "train": 1001,
+    "cal": 324,
+    "test": 481
+  },
+  "por_fuente": {
+    "hueco": 3947,
+    "plantilla": 607
+  },
+  "por_categoria_positivos": {
+    "PERSONA": 1150,
+    "IDENTIFICADOR": 208,
+    "DIRECCION": 198,
+    "OTRO": 97,
+    "CONTACTO": 153
+  },
+  "huecos_si": 1825,
+  "huecos_si_detectados": 1760,
+  "recall_detector_sobre_huecos_si": 0.9644,
+  "candidatos_unicos": 4554
+}

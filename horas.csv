@@ -12,3 +12,4 @@ fecha,paso,horas,tipo,descripcion
 2026-11-07,1,2,guia_didactica,"Capítulo 1 de la guía didáctica; ADR-015"
 2026-11-07,2,2,codigo,"Detector definitivo (src/detector) con tests y PR #10"
 2026-11-07,2,1,guia_didactica,"Capítulo 2 de la guía didáctica y figura de candidatos por tipo; ADR-016"
+2026-11-07,3,2.5,datos,"Generador sintético (src/data/synth.py, gazetteers), corpus de 313 documentos, ADR-017"

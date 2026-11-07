@@ -103,6 +103,7 @@ nav:
       - ADR-014 Cómputo local: decisiones/ADR-014-computo-local.md
       - ADR-015 Anotación ciega: decisiones/ADR-015-anotacion-ciega.md
       - ADR-016 Colab: decisiones/ADR-016-colab.md
+      - ADR-017 Corpus sintético: decisiones/ADR-017-sinteticos.md
   - Aprende:
       - guia/index.md
       - 0 · Un experimento honesto: guia/00-experimento-honesto.md
