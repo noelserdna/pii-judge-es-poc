@@ -22,3 +22,6 @@ checkpoints/
 # Locales
 .env
 *.local.*
+
+# Anotaciones del CENDOJ: no se publican hasta que conteste el CENDOJ (ADR-018)
+data/cendoj/annot/anotaciones.jsonl
