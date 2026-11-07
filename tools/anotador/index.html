@@ -121,7 +121,7 @@ function pintar(){
   $('cnt').textContent=`${hechas} / ${D.items.length}`; $('prog').style.width=(100*hechas/D.items.length)+'%';
   $('list').innerHTML = D.items.map((x,j)=>{const an=D.anotaciones[x.id];
     return `<a href="#" data-j="${j}" class="${an?'done-'+an.etiqueta:''} ${j===i?'cur':''}">${j+1}</a>`}).join('');
-  $('saved').textContent=''; t0=performance.now();
+  $('saved').textContent=''; t0=performance.now(); primera = a ? (a.etiqueta_inicial||a.etiqueta) : null;
   document.querySelector('.ctx mark')?.scrollIntoView({block:'nearest'});
 }
 function mostrarSug(){
@@ -132,13 +132,15 @@ function mostrarSug(){
   $('sug').innerHTML = (D.modo==='ciego' && !eligioPropia) ? 'La sugerencia se mostrará cuando elijas tu etiqueta.' : txt;
 }
 function marcarBotones(){document.querySelectorAll('#etbtns button').forEach(b=>b.classList.toggle('on',b.dataset.v===$('etiqueta').value))}
-function elegir(v){$('etiqueta').value=v; if(v!=='SI'){$('categoria').value='';$('rol').value=''}
+let primera=null;
+function elegir(v){ if(!eligioPropia && primera===null) primera=v;
+  $('etiqueta').value=v; if(v!=='SI'){$('categoria').value='';$('rol').value=''}
   else if(!$('categoria').value){$('categoria').value='PERSONA'}
   eligioPropia=true; marcarBotones(); mostrarSug();}
 async function guardar(){
   const it=D.items[i], s=D.sugerencias[it.id]||{};
   const d={id:it.id, etiqueta:$('etiqueta').value, categoria:$('categoria').value, rol:$('rol').value, nota:$('nota').value,
-    ms:Math.round(performance.now()-t0)};
+    ms:Math.round(performance.now()-t0), etiqueta_inicial: primera ?? $('etiqueta').value};
   if(!d.etiqueta){$('saved').textContent='Elige una etiqueta';return false}
   d.acepto_sugerencia = s.etiqueta===d.etiqueta && (s.categoria||'')===d.categoria && (s.rol||'')===d.rol;
   const r=await (await fetch('/api/guardar',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})).json();

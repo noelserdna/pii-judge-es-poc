@@ -49,16 +49,18 @@ class Estado:
         with self.lock:
             self.anot[item_id] = {**{k: datos.get(k, "") for k in CAMPOS},
                                   "acepto_sugerencia": bool(datos.get("acepto_sugerencia")),
+                                  "etiqueta_inicial": datos.get("etiqueta_inicial", ""),
                                   "ms": int(datos.get("ms", 0)), "modo": self.modo,
                                   "ts": time.strftime("%Y-%m-%dT%H:%M:%S")}
             self.salida.write_text(json.dumps(self.anot, ensure_ascii=False, indent=1), encoding="utf-8")
             with self.salida.with_suffix(".csv").open("w", encoding="utf-8", newline="") as fh:
                 w = csv.writer(fh)
-                w.writerow(["id", *CAMPOS, "acepto_sugerencia", "ms", "modo", "ts"])
+                w.writerow(["id", *CAMPOS, "etiqueta_inicial", "acepto_sugerencia", "ms", "modo", "ts"])
                 for i in self.items:
                     a = self.anot.get(i["id"])
                     if a:
-                        w.writerow([i["id"], *[a[k] for k in CAMPOS], a["acepto_sugerencia"], a["ms"], a["modo"], a["ts"]])
+                        w.writerow([i["id"], *[a[k] for k in CAMPOS], a.get("etiqueta_inicial", ""),
+                                    a["acepto_sugerencia"], a["ms"], a["modo"], a["ts"]])
 
 
 def crear_handler(estado: Estado):
