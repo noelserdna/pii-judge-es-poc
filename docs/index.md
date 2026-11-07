@@ -11,7 +11,7 @@ Las herramientas que ocultan datos personales en documentos jurídicos se pasan 
 
 ## Panel de progreso
 
-_Última actualización: 7 de noviembre de 2026 (Paso 2 cerrado: detector definitivo)._
+_Última actualización: 7 de noviembre de 2026 (Paso 3b: corpus sintético generado)._
 
 !!! warning "Pendiente de un tercero"
     El uso de sentencias del CENDOJ para construir el conjunto anotado (Paso 3a) espera la respuesta del CENDOJ a la consulta enviada el **7-11-2026**. Previsiblemente no hará falta autorización (art. 4.1 del Reglamento 3/2010: investigación sin finalidad comercial), pero hasta que lo confirmen rige el [ADR-013](decisiones/ADR-013-autorizacion-cendoj.md), con fecha límite del 24-11. Los demás pasos siguen adelante.
@@ -33,7 +33,7 @@ Leyenda: ⚪ sin datos · 🟢 pasa · 🟡 no concluyente · 🔴 no pasa. Los 
 | 0 | Proyecto, repo, chequeo de realidad y preregistro | 7–10 nov | 6–7 nov | 🟢 hecho |
 | 1 | Guía de anotación v1 | 11–12 nov | 7 nov | 🟢 hecho |
 | 2 | Detector de alta sensibilidad + Presidio | 12–14 nov | 7 nov | 🟢 hecho |
-| 3 | Datos: CENDOJ, sintéticos, candidatos, anotación | 15–24 nov | — | ⚪ pendiente |
+| 3 | Datos: CENDOJ, sintéticos, candidatos, anotación | 15–24 nov | — | 🔵 en curso (3b sintéticos hecho; 3a espera al CENDOJ) |
 | 4 | Congelado de etiquetas | 25 nov | — | ⚪ pendiente |
 | 5 | Sonda y baselines | 26 nov | — | ⚪ pendiente |
 | 6 | Entrenamiento | 27–28 nov | — | ⚪ pendiente |
@@ -46,10 +46,10 @@ Leyenda: ⚪ sin datos · 🟢 pasa · 🟡 no concluyente · 🔴 no pasa. Los 
 |---|---|---|
 | Sentencias del chequeo de realidad (solo local) | 10 | 10 |
 | Sentencias CENDOJ para el conjunto anotado | 0 | ~25 |
-| Familias sintéticas | 0 | 10–12 |
+| Familias sintéticas | 12 (313 documentos, 4.554 candidatos) | 10–12 |
 | Grupos anotados (1 mención por grupo, [ADR-012](decisiones/ADR-012-unidad-de-anotacion.md)) | 0 | ~1.700 |
 | Ambiguos excluidos | — | < 5 % |
-| Positivos en el conjunto de test | 0 | ≥ 500 |
+| Positivos en el conjunto de test | 481 sintéticos + CENDOJ pendiente | ≥ 500 |
 | Acuerdo humano–IA en la prueba ciega (κ, solo orientativo) | 0,91 | — |
 | Acuerdo entre anotaciones del protocolo (κ) | — | ≥ 0,6 |
 
@@ -70,7 +70,7 @@ Ver [Aprende](guia/index.md).
 
 | Horas acumuladas | Coste acumulado |
 |---|---|
-| 23 h | 0 € |
+| 25,5 h | 0 € |
 
 Fuente: [`horas.csv`](https://github.com/noelserdna/pii-judge-es-poc/blob/main/horas.csv) y [`costes.csv`](https://github.com/noelserdna/pii-judge-es-poc/blob/main/costes.csv).
 
